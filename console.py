@@ -18,6 +18,8 @@ members_repository.save(member_1)
 member_2 = Member("Jane", "Smith", "10/11/80", "15/8/19")
 members_repository.save(member_2)
 
-results = class_repository.select(2)
+class_2.name = "Bloga"
+
+result = class_repository.update(class_2)
 
 pdb.set_trace()
