@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% for class in all_classes %}
+        <article>
+            <h2>{{ class.name }}</h2>
+            <p>Type: {{ class.type }}</p>
+            <p>Date: {{ class.date }}</p>
+            <p>Time: {{ class.time }}</p>
+            <a href="/classes/view/{{ class.id }}">See members</a>
+            <a href="/classes/{{ class.id }}/edit">Edit class</a>
+        </article>
+    {% endfor %}
+{% endblock %}

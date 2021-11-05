@@ -3,6 +3,7 @@ from db.run_sql import run_sql
 from models.gym_class import Class
 from models.member import Member
 
+
 def save(gym_class):
     sql = "INSERT INTO classes (name, type, date, time) VALUES (%s, %s, %s, %s) RETURNING *"
     values = [gym_class.name, gym_class.type, gym_class.date, gym_class.time]
@@ -18,7 +19,7 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        gym_class = Class(row["name"], row["type"], row["date"], row["time"])
+        gym_class = Class(row["name"], row["type"], row["date"], row["time"], row["id"])
         classes.append(gym_class)
     return classes
     
@@ -31,6 +32,7 @@ def select(id):
     if result is not None:
         gym_class = Class(result["name"], result["type"], result["date"], result["time"], result["id"])
     return gym_class
+
 
 def update(gym_class):
     sql = "UPDATE classes SET (name, type, date, time) = (%s, %s, %s, %s) WHERE id = %s"

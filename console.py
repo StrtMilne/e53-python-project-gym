@@ -3,6 +3,7 @@ from models.member import Member
 from models.gym_class import Class
 import repositories.classes_repository as class_repository
 import repositories.members_repository as members_repository
+import controllers.classes_controller as classes_controller
 
 import pdb
 
@@ -21,5 +22,7 @@ members_repository.save(member_2)
 class_2.name = "Bloga"
 
 result = class_repository.update(class_2)
+
+classes_controller.edit_class(2)
 
 pdb.set_trace()
