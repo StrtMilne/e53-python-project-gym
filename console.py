@@ -4,6 +4,8 @@ from models.gym_class import Class
 import repositories.classes_repository as class_repository
 import repositories.members_repository as members_repository
 
+import pdb
+
 class_1 = Class("Yoga", "Cardio", "11/11/21", "15:30")
 class_repository.save(class_1)
 
@@ -16,4 +18,6 @@ members_repository.save(member_1)
 member_2 = Member("Jane", "Smith", "10/11/80", "15/8/19")
 members_repository.save(member_2)
 
-members_repository.update(member_2)
+results = class_repository.select(2)
+
+pdb.set_trace()
