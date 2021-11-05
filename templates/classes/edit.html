@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <form action="/edit" method="POST">
+    <form action="/classes/{{ gym_class.id }}/edit" method="POST">
         <div>
             <label for="name">Name:</label>
             <input type="text" name="name" id="name" value="{{ gym_class.name }}" required>
@@ -18,6 +18,6 @@
             <label for="time">Time:</label>
             <input type="text" name="time" id="time" value="{{ gym_class.time }}" required>
         </div>
-        <button type="submit">Edit class</button>
+        <button type="submit">Update class</button>
     </form>
 {% endblock %}

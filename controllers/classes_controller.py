@@ -14,3 +14,13 @@ def classes():
 def edit_class(id):
     gym_class = classes_repository.select(id)
     return render_template("/classes/edit.html", gym_class=gym_class)
+
+@classes_blueprint.route("/classes/<id>/edit", methods=["POST"])
+def update_class(id):
+    name = request.form["name"]
+    type = request.form["type"]
+    date = request.form["date"]
+    time = request.form["time"]
+    gym_class = Class(name, type, date, time, id)
+    classes_repository.update(gym_class)
+    return redirect("/classes")
