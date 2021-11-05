@@ -6,16 +6,16 @@ CREATE TABLE members (
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(255),
     last_name VARCHAR(255),
-    dob DATE,
-    join_date DATE
+    dob VARCHAR(255),
+    join_date VARCHAR(255)
 );
 
 CREATE TABLE classes (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
     type VARCHAR(255),
-    date DATE,
-    time TIME
+    date VARCHAR(255),
+    time VARCHAR(255)
 );
 
 CREATE TABLE attendances (

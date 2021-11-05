@@ -1,5 +1,3 @@
-from datetime import date
-
 class Member:
 
     def __init__(self, first_name, last_name, dob, join_date, id=None):
