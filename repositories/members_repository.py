@@ -10,3 +10,24 @@ def save(member):
     id = results[0]["id"]
     member.id = id
     return member
+
+def select_all():
+    members = []
+    sql = "SELECT * FROM members"
+    results = run_sql(sql)
+
+    for row in results:
+        member = Member(row["first_name"], row["last_name"], row["dob"], row["join_date"], row["id"])
+        members.append(member)
+
+    return members
+
+def select(id):
+    member = None
+    sql = "SELECT * FROM members where id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+
+    id = results[0]["id"]
+    member.id = id
+    return member
