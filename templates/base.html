@@ -1,29 +1,31 @@
 <html>
     <head>
         <title> Gymini - {{ title }}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     </head>
     <body>
         <header>
-            <a href="/">HOME</a>
+            <a href="/" class="home-button">HOME</a>
             <h1>Gymini - {{ title }}</h1>
         </header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/members">Members</a>
+                </li>
+                <li>
+                    <a href="/members/new">Add member</a>
+                </li>
+                <li>
+                    <a href="/classes">Classes</a>
+                </li>
+                <li>
+                    <a href="/classes/new">Add class</a>
+                </li>
+            </ul>
+        </nav>
         <main>
-            <nav>
-                <ul>
-                    <li>
-                        <a href="/members">Members</a>
-                    </li>
-                    <li>
-                        <a href="/members/new">Add member</a>
-                    </li>
-                    <li>
-                        <a href="/classes">Classes</a>
-                    </li>
-                    <li>
-                        <a href="/classes/new">Add class</a>
-                    </li>
-                </ul>
-            </nav>
+    
             {% block content %}
 
             {% endblock %}
