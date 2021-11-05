@@ -1,24 +1,28 @@
-from flask import Flask, render_template, redirect, Blueprint
+from flask import Flask, render_template, redirect, Blueprint, request
 from models.member import Member
 from models.gym_class import Class
 
-import repositories.members_repository as member_repository
+import repositories.members_repository as members_repository
 import repositories.classes_repository as classes_repository
 
 members_blueprint = Blueprint("members", __name__)
 
 @members_blueprint.route("/members")
 def members():
-    members = member_repository.select_all()
+    members = members_repository.select_all()
     return render_template("/members/view.html", all_members=members)
 
 @members_blueprint.route("/members/<id>/edit")
 def edit_member(id):
-    member = member_repository.select(id)
-    render_template("/edit.html", member=member)
+    member = members_repository.select(id)
+    return render_template("members/edit.html", member=member)
 
-@members_blueprint.route("/members/<id>/edit", methods=["POST"]
+@members_blueprint.route("/members/<id>/edit", methods=["POST"])
 def update_member(id):
     first_name = request.form["first_name"]
     last_name = request.form["last_name"]
-    
+    dob = request.form["dob"]
+    join_date = request.form["join_date"]
+    member = Member(first_name, last_name, dob, join_date, id)
+    members_repository.update(member)
+    return redirect("/members")

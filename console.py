@@ -1,3 +1,4 @@
+from controllers import members_controller
 from models.member import Member
 from models.gym_class import Class
 import repositories.classes_repository as class_repository
@@ -14,3 +15,5 @@ members_repository.save(member_1)
 
 member_2 = Member("Jane", "Smith", "10/11/80", "15/8/19")
 members_repository.save(member_2)
+
+members_repository.update(member_2)
