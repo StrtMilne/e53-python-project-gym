@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title> Gymini - {{ title }}</title>
+    </head>
+    <body>
+        <header>
+            <a href="/">HOME</a>
+            <h1>Gymini - {{ title }}</h1>
+        </header>
+        <main>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="/members">Members</a>
+                    </li>
+                    <li>
+                        <a href="/members/new">Add member</a>
+                    </li>
+                    <li>
+                        <a href="/classes">Classes</a>
+                    </li>
+                    <li>
+                        <a href="/classes/new">Add class</a>
+                    </li>
+                </ul>
+            </nav>
+            {% block content %}
+
+            {% endblock %}
+        </main>
+        <footer>
+            <h2>Gymini</h2>
+            <p>Contact us: 0131 331 1133</p>
+            <address>
+                <p>12 Bread St</p>
+                <p>Edinburgh</p>
+                <p>EH1 23A</p>
+            </address>
+        </footer>
+    </body>
+</html>
