@@ -1,8 +1,7 @@
 from db.run_sql import run_sql
 
-
-import pdb
 from models.member import Member
+from models.gym_class import Class
 
 def save(member):
     sql = "INSERT INTO members (first_name, last_name, dob, join_date) VALUES (%s, %s, %s, %s) RETURNING *"
@@ -39,3 +38,14 @@ def update(member):
     values = [member.first_name, member.last_name, member.dob, member.join_date, member.id]
     run_sql(sql, values)
     return member
+
+def classes(id):
+    classes = []
+    sql = "SELECT classes.* FROM classes INNER JOIN attendances ON attendances.member_id = classes.id INNER JOIN members ON members.id = attendances.member_id WHERE members.id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        gym_class = Class(row["name"], row["type"], row["date"], row["time"], row["id"])
+        classes.append(gym_class)
+    return classes
