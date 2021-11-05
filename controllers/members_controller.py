@@ -26,3 +26,18 @@ def update_member(id):
     member = Member(first_name, last_name, dob, join_date, id)
     members_repository.update(member)
     return redirect("/members")
+
+@members_blueprint.route("/members/new")
+def add_member():
+    return render_template("/members/new.html")
+
+@members_blueprint.route("/members/new", methods=["POST"])
+def create_member():
+    first_name = request.form["first_name"]
+    last_name = request.form["last_name"]
+    dob = request.form["dob"]
+    join_date = request.form["join_date"]
+    member = Member(first_name, last_name, dob, join_date)
+    members_repository.save(member)
+
+    return redirect("/members")
