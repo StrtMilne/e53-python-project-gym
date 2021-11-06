@@ -1,8 +1,10 @@
 from flask import Flask, render_template, redirect, request, Blueprint
+from models.attendance import Attendance
 from models.gym_class import Class
 
 import repositories.classes_repository as classes_repository
 import repositories.members_repository as members_repository
+import repositories.attendances_repository as attendances_repository
 
 classes_blueprint = Blueprint("classes", __name__)
 
@@ -45,4 +47,13 @@ def booked_members(id):
     members = []
     members = classes_repository.members(id)
     all_members = members_repository.select_all()
-    return render_template("/classes/booked_members.html", title="Booked members", booked_members=members, all_members=all_members)
+    return render_template("/classes/booked_members.html", title="Booked members", booked_members=members, all_members=all_members, id=id)
+
+@classes_blueprint.route("/classes/<id>/<class_id>/add_member")
+def add_member_to_class(id, class_id):
+    member = members_repository.select(id)
+    gym_class = classes_repository.select(id)
+    gym_class.add_member_to_class(member)
+    attendance = Attendance(id, class_id)
+    attendances_repository.save(attendance)
+    return redirect("/classes")

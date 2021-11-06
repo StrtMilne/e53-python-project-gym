@@ -25,7 +25,7 @@
         <p>Date of birth: {{ member.dob }}</p>
         <p>Date joined: {{ member.join_date }}</p>
         <p>Member ID: {{ member.id }}</p>
-        <a href="/classes/{{ member.id }}/add_member">Add to class</a>
+        <a href="/classes/{{ member.id }}/{{ id }}/add_member">Add to class</a>
     </div>
     {% endfor %}
 </section>

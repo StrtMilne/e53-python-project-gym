@@ -10,3 +10,4 @@ class Class:
 
     def add_member_to_class(self, member):
         self.members.append(member)
+        return 
