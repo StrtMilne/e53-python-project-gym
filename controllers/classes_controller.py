@@ -28,3 +28,13 @@ def update_class(id):
 @classes_blueprint.route("/classes/new")
 def add_class():
     return render_template("/classes/new.html", title="Add new class")
+
+@classes_blueprint.route("/classes/new", methods=["POST"])
+def create_class():
+    name = request.form["name"]
+    type = request.form["type"]
+    date = request.form["date"]
+    time = request.form["time"]
+    gym_class = Class(name, type, date, time)
+    classes_repository.save(gym_class)
+    return redirect("/classes")
