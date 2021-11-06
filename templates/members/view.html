@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<section class="view-container">
     {% for member in all_members %}
         <article>
             <h2>{{ member.last_name }}, {{ member.first_name }}</h2>
@@ -11,4 +11,5 @@
             <a href="/members/{{ member.id }}/edit">Edit member</a>
         </article>
     {% endfor %}
+</section>
 {% endblock %}

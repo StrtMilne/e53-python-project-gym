@@ -48,3 +48,8 @@ header {
     justify-content: center;
     width: 100px
 }
+
+.view-container {
+    display: flex;
+    flex-flow: row wrap;
+}

@@ -44,6 +44,8 @@ def create_member():
 
 @members_blueprint.route("/members/<id>/view")
 def booked_classes(id):
+    classes = []
     classes = members_repository.classes(id)
     unbooked_classes = members_repository.unbooked_classes(id)
-    return render_template("/members/booked_classes.html", title="Booked classes", all_classes=classes, all_unbooked=unbooked_classes)
+    all_classes = classes_repository.select_all()
+    return render_template("/members/booked_classes.html", title="Booked classes", booked_classes=classes, all_classes=all_classes)

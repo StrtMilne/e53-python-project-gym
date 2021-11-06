@@ -1,6 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<h2>Booked classes:</h2>
+    {% if booked_classes == [] %}
+    <h3>No classes booked yet!</h3>
+    {% endif %}
+<section class="view-container">
+    {% for class in booked_classes %}
+    <div>
+        <h2>{{ class.name }}</h2>
+        <p>Type: {{ class.type }}</p>
+        <p>Date: {{ class.date }}</p>
+        <p>Time: {{ class.time }}</p>
+    </div>
+    {% endfor %}
+</section>
+    <hr>
+<h2>Sign up for more:</h2>
+<section class="view-container">
     {% for class in all_classes %}
     <div>
         <h2>{{ class.name }}</h2>
@@ -9,16 +27,5 @@
         <p>Time: {{ class.time }}</p>
     </div>
     {% endfor %}
-
-    <hr>
-
-    {% for class in all_unbooked %}
-    <div>
-        <h2>{{ class.name }}</h2>
-        <p>Type: {{ class.type }}</p>
-        <p>Date: {{ class.date }}</p>
-        <p>Time: {{ class.time }}</p>
-    </div>
-    {% endfor %}
-
+</section>
 {% endblock %}

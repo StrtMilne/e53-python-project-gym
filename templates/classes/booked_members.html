@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {% for member in all_members %}
+<h2>Booked members:</h2>
+    {% if booked_members == [] %}
+    <h3>No sign-ups yet!</h3>
+    {% endif %}
+<section class="view-container">
+    {% for member in booked_members %}
         <div>
             <p>Last name: {{ member.last_name }}</p>
             <p>First name: {{ member.first_name }}</p>
@@ -10,4 +15,18 @@
             <p>Member ID: {{ member.id }}</p>
         </div>
     {% endfor %}
+</section>
+    <hr>
+<h2>Sign up more:</h2>
+<section class="view-container">
+    {% for member in all_members %}
+    <div>
+        <h2>{{ member.last_name }}, {{ member.first_name }}</h2>
+        <p>Date of birth: {{ member.dob }}</p>
+        <p>Date joined: {{ member.join_date }}</p>
+        <p>Member ID: {{ member.id }}</p>
+        <a href="/classes/{{ member.id }}/add_member">Add to class</a>
+    </div>
+    {% endfor %}
+</section>
 {% endblock %}

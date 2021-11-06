@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, request, Blueprint
 from models.gym_class import Class
 
 import repositories.classes_repository as classes_repository
+import repositories.members_repository as members_repository
 
 classes_blueprint = Blueprint("classes", __name__)
 
@@ -41,5 +42,7 @@ def create_class():
 
 @classes_blueprint.route("/classes/<id>/view")
 def booked_members(id):
+    members = []
     members = classes_repository.members(id)
-    return render_template("/classes/booked_members.html", title="Booked members",all_members=members)
+    all_members = members_repository.select_all()
+    return render_template("/classes/booked_members.html", title="Booked members", booked_members=members, all_members=all_members)

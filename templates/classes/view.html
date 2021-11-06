@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<section class="view-container">
     {% for class in all_classes %}
         <article>
             <h2>{{ class.name }}</h2>
@@ -12,4 +12,5 @@
             <a href="/classes/{{ class.id }}/edit">Edit class</a>
         </article>
     {% endfor %}
+</section>
 {% endblock %}
