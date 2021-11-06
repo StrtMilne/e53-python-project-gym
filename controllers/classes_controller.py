@@ -8,12 +8,12 @@ classes_blueprint = Blueprint("classes", __name__)
 @classes_blueprint.route("/classes")
 def classes():
     classes = classes_repository.select_all()
-    return render_template("/classes/view.html", all_classes=classes)
+    return render_template("/classes/view.html", title="View classes", all_classes=classes)
 
 @classes_blueprint.route("/classes/<id>/edit")
 def edit_class(id):
     gym_class = classes_repository.select(id)
-    return render_template("/classes/edit.html", gym_class=gym_class)
+    return render_template("/classes/edit.html", title="Edit class",gym_class=gym_class)
 
 @classes_blueprint.route("/classes/<id>/edit", methods=["POST"])
 def update_class(id):
@@ -42,4 +42,4 @@ def create_class():
 @classes_blueprint.route("/classes/<id>/view")
 def booked_members(id):
     members = classes_repository.members(id)
-    return render_template("/classes/booked_members.html", all_members=members)
+    return render_template("/classes/booked_members.html", title="Booked members",all_members=members)

@@ -49,3 +49,15 @@ def classes(id):
         gym_class = Class(row["name"], row["type"], row["date"], row["time"], row["id"])
         classes.append(gym_class)
     return classes
+
+def unbooked_classes(id):
+    classes = []
+    sql = "SELECT DISTINCT classes.* FROM classes INNER JOIN attendances ON attendances.member_id = classes.id INNER JOIN members ON members.id = attendances.member_id WHERE NOT members.id = %s"
+    values = [id]
+
+    results = run_sql(sql, values)
+
+    for row in results:
+        gym_class = Class(row["name"], row["type"], row["date"], row["time"], row["id"])
+        classes.append(gym_class)
+    return classes

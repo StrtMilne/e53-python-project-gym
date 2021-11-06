@@ -10,12 +10,12 @@ members_blueprint = Blueprint("members", __name__)
 @members_blueprint.route("/members")
 def members():
     members = members_repository.select_all()
-    return render_template("/members/view.html", all_members=members)
+    return render_template("/members/view.html", title="All members", all_members=members)
 
 @members_blueprint.route("/members/<id>/edit")
 def edit_member(id):
     member = members_repository.select(id)
-    return render_template("members/edit.html", member=member)
+    return render_template("members/edit.html", title="Edit member", member=member)
 
 @members_blueprint.route("/members/<id>/edit", methods=["POST"])
 def update_member(id):
@@ -29,7 +29,7 @@ def update_member(id):
 
 @members_blueprint.route("/members/new")
 def add_member():
-    return render_template("/members/new.html")
+    return render_template("/members/new.html", title="Add new member")
 
 @members_blueprint.route("/members/new", methods=["POST"])
 def create_member():
@@ -45,4 +45,5 @@ def create_member():
 @members_blueprint.route("/members/<id>/view")
 def booked_classes(id):
     classes = members_repository.classes(id)
-    return render_template("/members/booked_classes.html", all_classes=classes)
+    unbooked_classes = members_repository.unbooked_classes(id)
+    return render_template("/members/booked_classes.html", title="Booked classes", all_classes=classes, all_unbooked=unbooked_classes)
