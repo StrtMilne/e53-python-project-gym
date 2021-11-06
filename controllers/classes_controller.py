@@ -38,3 +38,8 @@ def create_class():
     gym_class = Class(name, type, date, time)
     classes_repository.save(gym_class)
     return redirect("/classes")
+
+@classes_blueprint.route("/classes/<id>/view")
+def booked_members(id):
+    members = classes_repository.members(id)
+    return render_template("/classes/booked_members.html", all_members=members)

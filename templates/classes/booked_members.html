@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for member in all_members %}
+        <div>
+            <p>Last name: {{ member.last_name }}</p>
+            <p>First name: {{ member.first_name }}</p>
+            <p>Date of birth: {{ member.dob }}</p>
+            <p>Date joined: {{ member.join_date }}</p>
+            <p>Member ID: {{ member.id }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

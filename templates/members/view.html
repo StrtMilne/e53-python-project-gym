@@ -7,7 +7,7 @@
             <h2>{{ member.last_name }}, {{ member.first_name }}</h2>
             <p>Date of birth: {{ member.dob }}</p>
             <p>Joined: {{ member.join_date }}</p>
-            <a href="/members/view/{{ member.id }}">See classes</a>
+            <a href="/members/{{ member.id }}/view">See classes</a>
             <a href="/members/{{ member.id }}/edit">Edit member</a>
         </article>
     {% endfor %}

@@ -2,10 +2,12 @@
 
 {% block content %}
     {% for class in all_classes %}
+    <div>
         <h2>{{ class.name }}</h2>
         <p>Type: {{ class.type }}</p>
         <p>Date: {{ class.date }}</p>
         <p>Time: {{ class.time }}</p>
+    </div>
     {% endfor %}
-    
+
 {% endblock %}

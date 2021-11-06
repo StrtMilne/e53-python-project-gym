@@ -42,7 +42,7 @@ def create_member():
 
     return redirect("/members")
 
-@members_blueprint.route("/members/view/<id>")
+@members_blueprint.route("/members/<id>/view")
 def booked_classes(id):
     classes = members_repository.classes(id)
     return render_template("/members/booked_classes.html", all_classes=classes)
