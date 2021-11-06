@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<h1>{{ member.first_name }} {{ member.last_name }}</h1>
 <h2>Booked classes:</h2>
     {% if booked_classes == [] %}
     <h3>No classes booked yet!</h3>
@@ -16,8 +16,8 @@
     </div>
     {% endfor %}
 </section>
-    <hr>
-<h2>Sign up for more:</h2>
+    <!-- <hr> -->
+<!-- <h2>Sign up for more:</h2> #Not part of MVP
 <section class="view-container">
     {% for class in all_classes %}
     <div>
@@ -26,6 +26,6 @@
         <p>Date: {{ class.date }}</p>
         <p>Time: {{ class.time }}</p>
     </div>
-    {% endfor %}
+    {% endfor %} -->
 </section>
 {% endblock %}

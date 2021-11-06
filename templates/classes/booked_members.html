@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+<h1>{{ gym_class }}</h1>
 <h2>Booked members:</h2>
     {% if booked_members == [] %}
     <h3>No sign-ups yet!</h3>
@@ -8,8 +9,7 @@
 <section class="view-container">
     {% for member in booked_members %}
         <div>
-            <p>Last name: {{ member.last_name }}</p>
-            <p>First name: {{ member.first_name }}</p>
+            <h3>{{ member.last_name }}, {{ member.first_name }}</h3>
             <p>Date of birth: {{ member.dob }}</p>
             <p>Date joined: {{ member.join_date }}</p>
             <p>Member ID: {{ member.id }}</p>
@@ -21,7 +21,7 @@
 <section class="view-container">
     {% for member in all_members %}
     <div>
-        <h2>{{ member.last_name }}, {{ member.first_name }}</h2>
+        <h3>{{ member.last_name }}, {{ member.first_name }}</h3>
         <p>Date of birth: {{ member.dob }}</p>
         <p>Date joined: {{ member.join_date }}</p>
         <p>Member ID: {{ member.id }}</p>

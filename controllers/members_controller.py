@@ -46,6 +46,7 @@ def create_member():
 def booked_classes(id):
     classes = []
     classes = members_repository.classes(id)
-    unbooked_classes = members_repository.unbooked_classes(id)
+    # unbooked_classes = members_repository.unbooked_classes(id) #Probably not needed
     all_classes = classes_repository.select_all()
-    return render_template("/members/booked_classes.html", title="Booked classes", booked_classes=classes, all_classes=all_classes)
+    member = members_repository.select(id)
+    return render_template("/members/booked_classes.html", title="Booked classes", member=member, booked_classes=classes, all_classes=all_classes)
