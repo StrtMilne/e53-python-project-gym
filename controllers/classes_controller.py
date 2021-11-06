@@ -24,3 +24,7 @@ def update_class(id):
     gym_class = Class(name, type, date, time, id)
     classes_repository.update(gym_class)
     return redirect("/classes")
+
+@classes_blueprint.route("/classes/new")
+def add_class():
+    return render_template("/classes/new.html", title="Add new class")
