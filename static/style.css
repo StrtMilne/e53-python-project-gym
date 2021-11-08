@@ -7,7 +7,7 @@ body {
         "nav main"
         "footer footer";
     grid-template-columns: 150px auto;
-    grid-template-rows: 100px auto 150px;
+    grid-template-rows: 100px auto 120px;
 }
 
 main {
@@ -30,6 +30,7 @@ footer {
     background-color: green;
     color: white;
     display: grid;
+    align-items: center;
     grid-template-areas: 
         "title contact address";
     grid-template-columns: 150px auto 150px;
@@ -41,6 +42,11 @@ header {
     display: flex;
     flex-direction: row;
     grid-area: header;
+    color: white;
+}
+
+.head-title {
+    padding: 0 0 0 10px;
 }
 
 .home-button {
@@ -151,4 +157,16 @@ li:hover {
 
 .link-button {
     text-decoration: none;
+}
+
+.footer-title {
+    padding: 0 0 0 20px;
+}
+
+.footer-contact {
+    padding: 0;
+}
+
+.footer-address {
+    padding: 0 0 10px 0;
 }
