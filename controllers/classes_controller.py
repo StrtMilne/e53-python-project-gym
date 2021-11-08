@@ -6,6 +6,8 @@ import repositories.classes_repository as classes_repository
 import repositories.members_repository as members_repository
 import repositories.attendances_repository as attendances_repository
 
+import pdb
+
 classes_blueprint = Blueprint("classes", __name__)
 
 @classes_blueprint.route("/classes")
@@ -55,13 +57,24 @@ def booked_members(id):
     number_attendees = len(members)
     return render_template("/classes/booked_members.html", title="Booked members", gym_class=gym_class, class_name=class_name, booked_members=members, all_members=all_members, all_member_ids=member_ids, number_attendees=number_attendees, id=id)
 
-@classes_blueprint.route("/classes/<id>/<class_id>/add_member")
-def add_member_to_class(id, class_id):
-    attendance = Attendance(id, class_id)
-    attendances_repository.save(attendance)
-    return redirect("/classes")
+# @classes_blueprint.route("/classes/<id>/<class_id>/add_member")
+# def add_member_to_class(id, class_id):
+#     attendance = Attendance(id, class_id)
+#     attendances_repository.save(attendance)
+#     return redirect("/classes")
+
+##replaced with multi-select
 
 @classes_blueprint.route("/classes/booked_members/<member_id>/<class_id>/remove")
 def remove_member(member_id, class_id):
     classes_repository.member_remove(member_id, class_id)
+    return redirect("/classes")
+
+@classes_blueprint.route("/classes/<class_id>/booked_members", methods=["POST"])
+def add_multiple_members(class_id):
+    members = []
+    members = request.form.to_dict(flat=False)["member_id"]
+    for row in members:
+        attendance = Attendance(row, class_id)
+        attendances_repository.save(attendance)
     return redirect("/classes")
