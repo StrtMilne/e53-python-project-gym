@@ -15,8 +15,8 @@ CREATE TABLE classes (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
     type VARCHAR(255),
-    date VARCHAR(255),
-    time VARCHAR(255),
+    date DATE(255),
+    time TIME(255),
     capacity INT
 );
 

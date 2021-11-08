@@ -35,6 +35,7 @@ footer {
         "title contact address";
     grid-template-columns: 150px auto 150px;
     grid-area: footer;
+    margin: 0;
 }
 
 header {

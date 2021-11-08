@@ -5,23 +5,23 @@ from datetime import date, time
 class TestClass(unittest.TestCase):
 
     def test_class_has_name(self):
-        class_1 = Class("Yoga", "Cardio", "16/11/21", "15:30", 10)
+        class_1 = Class("Yoga", "Cardio", date(2021/11/16), time(15, 30), 10)
         self.assertEqual("Yoga", class_1.name)
 
     def test_class_has_type(self):
-        class_1 = Class("Yoga", "Cardio", "16/11/21", "15:30", 10)
+        class_1 = Class("Yoga", "Cardio", date(2021/11/16), time(15, 30), 10)
         self.assertEqual("Cardio", class_1.type)
 
     def test_class_has_date(self):
-        class_1 = Class("Yoga", "Cardio", "16/11/21", "15:30", 10)
-        self.assertEqual("16/11/21", class_1.date)
+        class_1 = Class("Yoga", "Cardio", date(2021/11/16), time(15, 30), 10)
+        self.assertEqual(date(2021/11/16), class_1.date)
 
     def test_class_has_time(self):
-        class_1 = Class("Yoga", "Cardio", "16/11/21", "15:30", 10)
-        self.assertEqual("15:30", class_1.time)
+        class_1 = Class("Yoga", "Cardio", date(2021/11/16), time(15, 30), 10)
+        self.assertEqual(time(15, 30), class_1.time)
     
     def test_class_has_capacity(self):
-        class_1 = Class("Yoga", "Cardio", "16/11/21", "15:30", 10)
+        class_1 = Class("Yoga", "Cardio", date(2021/11/16), time(15, 30), 10)
         self.assertEqual(10, class_1.capacity)
     
 
