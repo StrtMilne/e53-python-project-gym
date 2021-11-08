@@ -18,6 +18,13 @@
             <label for="join_date">Date joined: </label>
             <input type="text" name="join_date" id="join_date" value="{{ member.join_date }}" class="form-input" required>
         </div>
+        <div>
+            <label for="member-status">Member status: </label>
+            <select name="member-status" id="member-status" value="Active" required>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+            </select>
+        </div>
         <button type="submit" class="submit-button">Update member</button>
     </form>
 {% endblock %}

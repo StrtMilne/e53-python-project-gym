@@ -23,7 +23,11 @@ def update_member(id):
     last_name = request.form["last_name"]
     dob = request.form["dob"]
     join_date = request.form["join_date"]
-    member = Member(first_name, last_name, dob, join_date, id)
+    if request.form["member-status"] == "active":
+        active = True
+    if request.form["member-status"] == "inactive":
+        active = False
+    member = Member(first_name, last_name, dob, join_date, active, id)
     members_repository.update(member)
     return redirect("/members")
 
@@ -37,7 +41,8 @@ def create_member():
     last_name = request.form["last_name"]
     dob = request.form["dob"]
     join_date = request.form["join_date"]
-    member = Member(first_name, last_name, dob, join_date)
+    active = True
+    member = Member(first_name, last_name, dob, join_date, active)
     members_repository.save(member)
 
     return redirect("/members")

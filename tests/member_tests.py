@@ -22,3 +22,7 @@ class TestMember(unittest.TestCase):
     def test_member_has_id(self):
         member_1 = Member("Joe", "Bloggs", "12/5/90", "23/7/21")
         self.assertEqual(None, member_1.id)
+
+    def test_member_has_active_status(self):
+        member_1 = Member("Joe", "Bloggs", "12/5/90", "23/7/21")
+        self.assertEqual(True, member_1.active)
