@@ -2,6 +2,7 @@ from db.run_sql import run_sql
 
 from models.member import Member
 from models.gym_class import Class
+import repositories.classes_repository as classes_repository
 
 def save(member):
     sql = "INSERT INTO members (first_name, last_name, dob, join_date) VALUES (%s, %s, %s, %s) RETURNING *"
@@ -47,6 +48,7 @@ def classes(id):
 
     for row in results:
         gym_class = Class(row["name"], row["type"], row["date"], row["time"], row["id"])
+        gym_class.members = classes_repository.member_ids(row["id"])
         classes.append(gym_class)
     return classes
 
@@ -59,5 +61,6 @@ def unbooked_classes(id):
 
     for row in results:
         gym_class = Class(row["name"], row["type"], row["date"], row["time"], row["id"])
+        gym_class.members = classes_repository.member_ids(row["id"])
         classes.append(gym_class)
     return classes

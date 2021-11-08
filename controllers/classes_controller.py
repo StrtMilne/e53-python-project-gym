@@ -47,8 +47,10 @@ def booked_members(id):
     members = []
     members = classes_repository.members(id)
     all_members = members_repository.select_all()
-    gym_class = classes_repository.select(id).name
-    return render_template("/classes/booked_members.html", title="Booked members", gym_class=gym_class, booked_members=members, all_members=all_members, id=id)
+    gym_class = classes_repository.select(id)
+    class_name = gym_class.name
+    member_ids = classes_repository.member_ids(id)
+    return render_template("/classes/booked_members.html", title="Booked members", gym_class=gym_class, class_name=class_name, booked_members=members, all_members=all_members, all_member_ids=member_ids, id=id)
 
 @classes_blueprint.route("/classes/<id>/<class_id>/add_member")
 def add_member_to_class(id, class_id):

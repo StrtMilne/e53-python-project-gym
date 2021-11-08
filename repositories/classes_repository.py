@@ -50,3 +50,13 @@ def members(id):
         member = Member(row["first_name"], row["last_name"], row["dob"], row["join_date"], row["id"])
         members.append(member)
     return members
+
+def member_ids(id):
+    member_ids = []
+    sql = "SELECT attendances.member_id FROM members INNER JOIN attendances ON attendances.member_id = members.id INNER JOIN classes ON classes.id = attendances.class_id WHERE classes.id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+    for row in results:
+        id = row["member_id"]
+        member_ids.append(id)
+    return member_ids

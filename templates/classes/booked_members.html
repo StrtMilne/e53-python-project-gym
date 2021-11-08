@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>{{ gym_class }}</h1>
+<h1>{{ class_name }}</h1>
 <h2>Booked members:</h2>
     {% if booked_members == [] %}
     <h3>No sign-ups yet!</h3>
@@ -19,7 +19,9 @@
     <hr>
 <h2>Sign up more:</h2>
 <section class="view-container">
+    
     {% for member in all_members %}
+    {% if member.id not in all_member_ids %}
     <div>
         <h3>{{ member.last_name }}, {{ member.first_name }}</h3>
         <p>Date of birth: {{ member.dob }}</p>
@@ -27,6 +29,7 @@
         <p>Member ID: {{ member.id }}</p>
         <a href="/classes/{{ member.id }}/{{ id }}/add_member">Add to class</a>
     </div>
+    {% endif %}
     {% endfor %}
 </section>
 {% endblock %}

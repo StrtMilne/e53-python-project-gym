@@ -8,6 +8,5 @@ class Class:
         self.members = []
         self.id = id
 
-    def add_member_to_class(self, member):
-        self.members.append(member)
-        return 
+    def add_member_to_class(self, id):
+        self.members.append(id)
