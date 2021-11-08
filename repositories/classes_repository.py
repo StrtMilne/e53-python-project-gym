@@ -60,3 +60,8 @@ def member_ids(id):
         id = row["member_id"]
         member_ids.append(id)
     return member_ids
+
+def member_remove(member_id, class_id):
+    sql = "DELETE FROM attendances WHERE member_id = %s AND class_id = %s"
+    values = [member_id, class_id]
+    run_sql(sql, values)

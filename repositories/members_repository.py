@@ -64,3 +64,8 @@ def unbooked_classes(id):
         gym_class.members = classes_repository.member_ids(row["id"])
         classes.append(gym_class)
     return classes
+
+def class_remove(member_id, class_id):
+    sql = "DELETE FROM attendances WHERE member_id = %s AND class_id = %s"
+    values = [member_id, class_id]
+    run_sql(sql, values)

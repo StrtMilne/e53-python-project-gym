@@ -60,3 +60,8 @@ def add_member_to_class(id, class_id):
     attendance = Attendance(id, class_id)
     attendances_repository.save(attendance)
     return redirect("/classes")
+
+@classes_blueprint.route("/classes/booked_members/<member_id>/<class_id>/remove")
+def remove_member(member_id, class_id):
+    classes_repository.member_remove(member_id, class_id)
+    return redirect("/classes")
