@@ -10,10 +10,8 @@
     {% for member in booked_members %}
         <div class="member-item">
             <h3 class="text">{{ member.last_name }}, {{ member.first_name }}</h3>
-            <p class="text">Date of birth: {{ member.dob }}</p>
-            <p class="text">Date joined: {{ member.join_date }}</p>
             <p class="text">Member ID: {{ member.id }}</p>
-            <a href="/classes/booked_members/{{ member.id }}/{{ gym_class.id }}/remove">Remove member from class</a>
+            <a href="/classes/booked_members/{{ member.id }}/{{ gym_class.id }}/remove">Remove from class</a>
         </div>
     {% endfor %}
 </section>
@@ -23,11 +21,11 @@
 <section class="view-container">
     <form action="/classes/{{ gym_class.id }}/booked_members" method="POST">
     {% for member in all_members %}
+    {% if member.active == True %}
     {% if member.id not in all_member_ids %}
     <div class="member-item">
         <h3 class="text">{{ member.last_name }}, {{ member.first_name }}</h3>
-        <p class="text">Date of birth: {{ member.dob }}</p>
-        <p class="text">Date joined: {{ member.join_date }}</p>
+        <p class="text">Member status: Active</p>
         <p class="text">Member ID: {{ member.id }}</p>
         {% if number_attendees < gym_class.capacity %}
         <input type="checkbox" name="member_id" id="member_id" value="{{ member.id }}">
@@ -38,6 +36,7 @@
         <p class="">Class full</p>
         {% endif %}
     </div>
+    {% endif %}
     {% endif %}
     {% endfor %}
     <button type="submit">Add members</button>

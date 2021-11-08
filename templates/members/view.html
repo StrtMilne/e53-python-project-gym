@@ -7,6 +7,13 @@
             <h2 class="text">{{ member.last_name }}, {{ member.first_name }}</h2>
             <p class="text">Date of birth: {{ member.dob }}</p>
             <p class="text">Joined: {{ member.join_date }}</p>
+            <p class="text">Member status: {% if member.active == True %}
+                Active
+                {% endif %}
+                {% if member.active == False %}
+                Inactive
+                {% endif %}
+            </p>
             <div class="button-container">
                 <a href="/members/{{ member.id }}/view" class="view-items link-button">See classes</a>
                 <a href="/members/{{ member.id }}/edit" class="edit link-button">Edit member</a>

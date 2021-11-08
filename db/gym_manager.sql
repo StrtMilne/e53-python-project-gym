@@ -7,6 +7,7 @@ CREATE TABLE members (
     first_name VARCHAR(255),
     last_name VARCHAR(255),
     dob VARCHAR(255),
+    active BOOLEAN,
     join_date VARCHAR(255)
 );
 
