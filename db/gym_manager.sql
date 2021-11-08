@@ -15,7 +15,8 @@ CREATE TABLE classes (
     name VARCHAR(255),
     type VARCHAR(255),
     date VARCHAR(255),
-    time VARCHAR(255)
+    time VARCHAR(255),
+    capacity INT
 );
 
 CREATE TABLE attendances (

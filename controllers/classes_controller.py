@@ -24,7 +24,8 @@ def update_class(id):
     type = request.form["type"]
     date = request.form["date"]
     time = request.form["time"]
-    gym_class = Class(name, type, date, time, id)
+    capacity = request.form["capacity"]
+    gym_class = Class(name, type, date, time, capacity, id)
     classes_repository.update(gym_class)
     return redirect("/classes")
 
@@ -38,7 +39,8 @@ def create_class():
     type = request.form["type"]
     date = request.form["date"]
     time = request.form["time"]
-    gym_class = Class(name, type, date, time)
+    capacity = request.form["capacity"]
+    gym_class = Class(name, type, date, time, capacity)
     classes_repository.save(gym_class)
     return redirect("/classes")
 
@@ -50,7 +52,8 @@ def booked_members(id):
     gym_class = classes_repository.select(id)
     class_name = gym_class.name
     member_ids = classes_repository.member_ids(id)
-    return render_template("/classes/booked_members.html", title="Booked members", gym_class=gym_class, class_name=class_name, booked_members=members, all_members=all_members, all_member_ids=member_ids, id=id)
+    number_attendees = len(members)
+    return render_template("/classes/booked_members.html", title="Booked members", gym_class=gym_class, class_name=class_name, booked_members=members, all_members=all_members, all_member_ids=member_ids, number_attendees=number_attendees, id=id)
 
 @classes_blueprint.route("/classes/<id>/<class_id>/add_member")
 def add_member_to_class(id, class_id):

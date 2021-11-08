@@ -5,8 +5,8 @@ from models.member import Member
 
 
 def save(gym_class):
-    sql = "INSERT INTO classes (name, type, date, time) VALUES (%s, %s, %s, %s) RETURNING *"
-    values = [gym_class.name, gym_class.type, gym_class.date, gym_class.time]
+    sql = "INSERT INTO classes (name, type, date, time, capacity) VALUES (%s, %s, %s, %s, %s) RETURNING *"
+    values = [gym_class.name, gym_class.type, gym_class.date, gym_class.time, gym_class.capacity]
     results = run_sql(sql, values)
 
     id = results[0]['id']
@@ -19,7 +19,7 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        gym_class = Class(row["name"], row["type"], row["date"], row["time"], row["id"])
+        gym_class = Class(row["name"], row["type"], row["date"], row["time"], row["capacity"], row["id"])
         classes.append(gym_class)
     return classes
     
@@ -30,13 +30,13 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        gym_class = Class(result["name"], result["type"], result["date"], result["time"], result["id"])
+        gym_class = Class(result["name"], result["type"], result["date"], result["time"], result["capacity"], result["id"])
     return gym_class
 
 
 def update(gym_class):
-    sql = "UPDATE classes SET (name, type, date, time) = (%s, %s, %s, %s) WHERE id = %s"
-    values = [gym_class.name, gym_class.type, gym_class.date, gym_class.time, gym_class.id]
+    sql = "UPDATE classes SET (name, type, date, time, capacity) = (%s, %s, %s, %s, %s) WHERE id = %s"
+    values = [gym_class.name, gym_class.type, gym_class.date, gym_class.time, gym_class.capacity, gym_class.id]
     run_sql(sql, values)
     return gym_class
 

@@ -69,6 +69,8 @@ header {
 .member-item {
     background-color: lightgrey;
     margin: 5px;
+    display: flex;
+    flex-direction: column;
 }
 
 .view-items {
@@ -169,4 +171,19 @@ li:hover {
 
 .footer-address {
     padding: 0 0 10px 0;
+}
+
+.add-member {
+    margin: 0;
+    padding: 10px 20px 10px 20px;
+    background-color: green;
+    color: #000000;
+    width: auto;
+    text-align: center;
+    transition: 1s;
+    text-decoration: none;
+}
+
+.add-member:hover {
+    background-color: rgb(0, 109, 128);
 }

@@ -27,7 +27,12 @@
         <p class="text">Date of birth: {{ member.dob }}</p>
         <p class="text">Date joined: {{ member.join_date }}</p>
         <p class="text">Member ID: {{ member.id }}</p>
-        <a href="/classes/{{ member.id }}/{{ id }}/add_member" class="submit-button">Add to class</a>
+        {% if number_attendees < gym_class.capacity %}
+        <a href="/classes/{{ member.id }}/{{ id }}/add_member" class="add-member">Add to class</a>
+        {% endif %}
+        {% if number_attendees >= gym_class.capacity %}
+        <p class="">Class full</p>
+        {% endif %}
     </div>
     {% endif %}
     {% endfor %}

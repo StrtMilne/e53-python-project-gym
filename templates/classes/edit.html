@@ -18,6 +18,10 @@
             <label for="time">Time:</label>
             <input type="text" name="time" id="time" value="{{ gym_class.time }}" class="form-input" required>
         </div>
+        <div>
+            <label for="capacity">Capacity:</label>
+            <input type="text" name="capacity" id ="capacity" value="{{ gym_class.capacity }}" class="form-input" required>
+        </div>
         <button type="submit" class="submit-button">Update class</button>
     </form>
 {% endblock %}
