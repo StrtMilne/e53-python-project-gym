@@ -49,4 +49,9 @@ def booked_classes(id):
     # unbooked_classes = members_repository.unbooked_classes(id) #Probably not needed
     all_classes = classes_repository.select_all()
     member = members_repository.select(id)
-    return render_template("/members/booked_classes.html", title="Booked classes", member=member, booked_classes=classes, all_classes=all_classes)
+    return render_template("/members/booked_classes.html", title="Booked classes", member=member, booked_classes=classes, all_classes=all_classes, member_id=id)
+
+@members_blueprint.route("/members/booked_classes/<member_id>/<class_id>/remove")
+def remove_member(member_id, class_id):
+    classes_repository.member_remove(member_id, class_id)
+    return redirect("/members")
