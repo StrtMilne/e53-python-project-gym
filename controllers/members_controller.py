@@ -27,6 +27,10 @@ def update_member(id):
         active = True
     if request.form["member-status"] == "inactive":
         active = False
+    if request.form["member-status"] == "premium":
+        premium = True
+    if request.form["member-status"] == "standard":
+        premium = False
     member = Member(first_name, last_name, dob, join_date, active, id)
     members_repository.update(member)
     return redirect("/members")
@@ -42,7 +46,12 @@ def create_member():
     dob = request.form["dob"]
     join_date = request.form["join_date"]
     active = True
-    member = Member(first_name, last_name, dob, join_date, active)
+    if request.form["premium-status"] == "premium":
+        premium = True
+    if request.form["premium-status"] == "standard":
+        premium = False
+    member = Member(first_name, last_name, dob, join_date, active, premium)
+    print(vars(member))
     members_repository.save(member)
 
     return redirect("/members")

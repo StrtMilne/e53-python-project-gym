@@ -18,6 +18,13 @@
             <label for="join_date">Date joined: </label>
             <input type="text" name="join_date" id="join_date" placeholder="dd/mm/yy" class="form-input" required>
         </div>
+        <div>
+            <label for="premium-status">Membership type: </label>
+            <select name="premium-status" value="Standard" required>
+                <option value="standard">Standard</option>
+                <option value="premium">Premium</option>
+            </select>
+        </div>
         <button type="submit" class="submit-button">Add member</button>
     </form>
 {% endblock %}

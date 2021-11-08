@@ -8,6 +8,7 @@ CREATE TABLE members (
     last_name VARCHAR(255),
     dob VARCHAR(255),
     active BOOLEAN,
+    premium BOOLEAN,
     join_date VARCHAR(255)
 );
 
@@ -15,8 +16,8 @@ CREATE TABLE classes (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
     type VARCHAR(255),
-    date DATE(255),
-    time TIME(255),
+    date DATE,
+    time TIME,
     capacity INT
 );
 
