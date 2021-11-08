@@ -52,4 +52,103 @@ header {
 .view-container {
     display: flex;
     flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.class-item {
+    background-color: lightgrey;
+    margin: 5px;
+}
+
+.member-item {
+    background-color: lightgrey;
+    margin: 5px;
+}
+
+.view-items {
+    margin: 0;
+    padding: 10px 20px 10px 20px;
+    background-color: green;
+    color: #000000;
+    width: auto;
+    transition: 1s;
+}
+
+.view-items:hover {
+    background-color: rgb(0, 109, 128);
+}
+
+.edit {
+    margin: 0;
+    padding: 10px 20px 10px 20px;
+    background-color: orange;
+    color: black;
+    width: auto;
+    transition: 1s;
+}
+
+.edit:hover {
+    background-color: rgb(255, 230, 0);
+}
+
+.button-container {
+    display: flex;
+    margin: 0;
+    flex-direction: row;
+    width: auto;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    align-items: center;
+}
+
+.form-input {
+    background-color: rgb(168, 198, 255);
+    color: darkslategray;
+    border: 0;
+    padding: 10px;
+    margin: 5px;
+}
+
+.submit-button {
+    background-color: green;
+    color: white;
+    border: 0;
+    padding: 10px;
+    transition: 1s;
+}
+
+.submit-button:hover {
+    background-color: rgb(192, 102, 0);
+}
+
+.text {
+    padding: 0 10px 0 10px;
+}
+
+.nav-links {
+    color: white;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+li {
+    padding: 15px 0 15px 0;
+    transition: 1s;
+}
+
+li:hover {
+    background-color: rgb(107, 0, 247);
+}
+
+.link-button {
+    text-decoration: none;
 }

@@ -3,13 +3,15 @@
 {% block content %}
 <section class="view-container">
     {% for class in all_classes %}
-        <article>
-            <h2>{{ class.name }}</h2>
-            <p>Type: {{ class.type }}</p>
-            <p>Date: {{ class.date }}</p>
-            <p>Time: {{ class.time }}</p>
-            <a href="/classes/{{ class.id }}/view">See members</a>
-            <a href="/classes/{{ class.id }}/edit">Edit class</a>
+        <article class="class-item">
+            <h2 class="text">{{ class.name }}</h2>
+            <p class="text">Type: {{ class.type }}</p>
+            <p class="text">Date: {{ class.date }}</p>
+            <p class="text">Time: {{ class.time }}</p>
+            <div class="button-container">           
+                <a href="/classes/{{ class.id }}/view" class="view-items link-button">See members</a>
+                <a href="/classes/{{ class.id }}/edit" class="edit link-button">Edit class</a>
+        </div> 
         </article>
     {% endfor %}
 </section>

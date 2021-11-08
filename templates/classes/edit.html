@@ -1,23 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <form action="/classes/{{ gym_class.id }}/edit" method="POST">
+    <form action="/classes/{{ gym_class.id }}/edit" method="POST" class="form-container">
         <div>
             <label for="name">Name:</label>
-            <input type="text" name="name" id="name" value="{{ gym_class.name }}" required>
+            <input type="text" name="name" id="name" value="{{ gym_class.name }}" class="form-input" required>
         </div>
         <div>
             <label for="type">Class type:</label>
-            <input type="text" name="type" id="type" value="{{ gym_class.type }}" required>
+            <input type="text" name="type" id="type" value="{{ gym_class.type }}" class="form-input" required>
         </div>
         <div>
             <label for="date">Date:</label>
-            <input type="text" name="date" id="date" value="{{ gym_class.date }}" required>
+            <input type="text" name="date" id="date" value="{{ gym_class.date }}" class="form-input" required>
         </div>
         <div>
             <label for="time">Time:</label>
-            <input type="text" name="time" id="time" value="{{ gym_class.time }}" required>
+            <input type="text" name="time" id="time" value="{{ gym_class.time }}" class="form-input" required>
         </div>
-        <button type="submit">Update class</button>
+        <button type="submit" class="submit-button">Update class</button>
     </form>
 {% endblock %}

@@ -1,23 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <form action="/members/{{ member.id }}/edit" method="POST">
+    <form action="/members/{{ member.id }}/edit" method="POST" class="form-container">
         <div>
             <label for="first_name">First name:</label>
-            <input type="text" name="first_name" id="first_name" value="{{ member.first_name }}" required>
+            <input type="text" name="first_name" id="first_name" value="{{ member.first_name }}" class="form-input" required>
         </div>
         <div>
             <label for="last_name">First name:</label>
-            <input type="text" name="last_name" id="last_name" value="{{ member.last_name }}" required>
+            <input type="text" name="last_name" id="last_name" value="{{ member.last_name }}" class="form-input" required>
         </div>
         <div>
             <label for="dob">Date of birth: </label>
-            <input type="text" name="dob" id="dob" value="{{ member.dob }}" required>
+            <input type="text" name="dob" id="dob" value="{{ member.dob }}" class="form-input" required>
         </div>
         <div>
             <label for="join_date">Date joined: </label>
-            <input type="text" name="join_date" id="join_date" value="{{ member.join_date }}" required>
+            <input type="text" name="join_date" id="join_date" value="{{ member.join_date }}" class="form-input" required>
         </div>
-        <button type="submit">Update member</button>
+        <button type="submit" class="submit-button">Update member</button>
     </form>
 {% endblock %}

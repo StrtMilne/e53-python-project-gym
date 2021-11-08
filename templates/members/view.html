@@ -3,12 +3,14 @@
 {% block content %}
 <section class="view-container">
     {% for member in all_members %}
-        <article>
-            <h2>{{ member.last_name }}, {{ member.first_name }}</h2>
-            <p>Date of birth: {{ member.dob }}</p>
-            <p>Joined: {{ member.join_date }}</p>
-            <a href="/members/{{ member.id }}/view">See classes</a>
-            <a href="/members/{{ member.id }}/edit">Edit member</a>
+        <article class="member-item">
+            <h2 class="text">{{ member.last_name }}, {{ member.first_name }}</h2>
+            <p class="text">Date of birth: {{ member.dob }}</p>
+            <p class="text">Joined: {{ member.join_date }}</p>
+            <div class="button-container">
+                <a href="/members/{{ member.id }}/view" class="view-items link-button">See classes</a>
+                <a href="/members/{{ member.id }}/edit" class="edit link-button">Edit member</a>
+            </div>
         </article>
     {% endfor %}
 </section>

@@ -1,23 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <form action="/members/new" method="POST">
+    <form action="/members/new" method="POST" class="form-container">
         <div>
             <label for="first_name">First name:</label>
-            <input type="text" name="first_name" id="first_name" placeholder="First name" required>
+            <input type="text" name="first_name" id="first_name" placeholder="First name" class="form-input" required>
         </div>
         <div>
             <label for="last_name">First name:</label>
-            <input type="text" name="last_name" id="last_name" placeholder="Last name" required>
+            <input type="text" name="last_name" id="last_name" placeholder="Last name" class="form-input" required>
         </div>
         <div>
             <label for="dob">Date of birth: </label>
-            <input type="text" name="dob" id="dob" placeholder="dd/mm/yy" required>
+            <input type="text" name="dob" id="dob" placeholder="dd/mm/yy" class="form-input" required>
         </div>
         <div>
             <label for="join_date">Date joined: </label>
-            <input type="text" name="join_date" id="join_date" placeholder="dd/mm/yy" required>
+            <input type="text" name="join_date" id="join_date" placeholder="dd/mm/yy" class="form-input" required>
         </div>
-        <button type="submit">Add member</button>
+        <button type="submit" class="submit-button">Add member</button>
     </form>
 {% endblock %}

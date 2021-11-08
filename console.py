@@ -25,6 +25,6 @@ import pdb
 
 # classes_controller.edit_class(2)
 
-print(classes_repository.member_ids(1))
+# print(classes_repository.member_ids(1))
 
 pdb.set_trace()

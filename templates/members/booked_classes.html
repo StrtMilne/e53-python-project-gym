@@ -8,11 +8,11 @@
     {% endif %}
 <section class="view-container">
     {% for class in booked_classes %}
-    <div>
-        <h2>{{ class.name }}</h2>
-        <p>Type: {{ class.type }}</p>
-        <p>Date: {{ class.date }}</p>
-        <p>Time: {{ class.time }}</p>
+    <div class="class-item">
+        <h2 class="text">{{ class.name }}</h2>
+        <p class="text">Type: {{ class.type }}</p>
+        <p class="text">Date: {{ class.date }}</p>
+        <p class="text">Time: {{ class.time }}</p>
     </div>
     {% endfor %}
 </section>
