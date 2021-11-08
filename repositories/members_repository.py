@@ -42,7 +42,7 @@ def update(member):
 
 def classes(id):
     classes = []
-    sql = "SELECT classes.* FROM classes INNER JOIN attendances ON attendances.member_id = classes.id INNER JOIN members ON members.id = attendances.member_id WHERE members.id = %s"
+    sql = "SELECT classes.* FROM classes INNER JOIN attendances ON attendances.class_id = classes.id INNER JOIN members ON members.id = attendances.member_id WHERE members.id = %s"
     values = [id]
     results = run_sql(sql, values)
 
