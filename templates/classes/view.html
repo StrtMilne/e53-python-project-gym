@@ -4,7 +4,10 @@
 <section class="view-container">
     {% for class in all_classes %}
         <article class="class-item">
-            <h2 class="text">{{ class.name }}</h2>
+            <div class="class-heading">
+            <h2 class="text inline">{{ class.name }}</h2>
+            <a href="/classes/{{ class.id }}/delete" class="link-button delete-button inline"><img src="images/trash-2-64.png" alt="white bin icon"></a>
+            </div>
             <p class="text">Type: {{ class.type }}</p>
             <p class="text">Date: {{ class.date }}</p>
             <p class="text">Time: {{ class.time }}</p>
@@ -12,9 +15,6 @@
             <div class="button-container">
                 <a href="/classes/{{ class.id }}/view" class="view-items link-button">See members</a>
                 <a href="/classes/{{ class.id }}/edit" class="edit link-button">Edit class</a>
-            </div> 
-            <div class="button-container">
-                <a href="/classes/{{ class.id }}/delete" class="link-button">Delete class</a>
             </div> 
         </article>
     {% endfor %}

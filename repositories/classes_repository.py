@@ -65,3 +65,8 @@ def member_remove(member_id, class_id):
     sql = "DELETE FROM attendances WHERE member_id = %s AND class_id = %s"
     values = [member_id, class_id]
     run_sql(sql, values)
+
+def delete_class(id):
+    sql = "DELETE FROM classes WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)

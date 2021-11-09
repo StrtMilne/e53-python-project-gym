@@ -27,3 +27,8 @@ def select_all():
         attendance = Attendance(row["member_id"], row["class_id"], row["id"])
         attendances.append(attendance)
     return attendances
+
+def delete_class_in_attendances(id):
+    sql = "DELETE FROM attendances WHERE class_id = %s"
+    values = [id]
+    run_sql(sql, values)

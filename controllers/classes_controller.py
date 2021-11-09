@@ -79,3 +79,9 @@ def add_multiple_members(class_id):
         attendance = Attendance(row, class_id)
         attendances_repository.save(attendance)
     return redirect("/classes")
+
+@classes_blueprint.route("/classes/<id>/delete")
+def delete_of_class(id):
+    attendances_repository.delete_class_in_attendances(id)
+    classes_repository.delete_class(id)
+    return redirect("/classes")

@@ -231,3 +231,22 @@ li:hover {
 .inline {
     display: inline-block;
 }
+
+.delete-button {
+    margin: 0;
+    padding: 10px 20px 10px 20px;
+    background-color: red;
+    color: black;
+    width: 36px;
+    transition: 1s;
+}
+
+.delete-button:hover {
+    background-color: rgb(133, 0, 0)
+}
+
+.class-heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
