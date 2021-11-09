@@ -49,18 +49,23 @@
 
 <section class="view-container">
     {% for class in all_classes %}
-    {% if class.id not in all_class_ids %}
-    <div class="view-member">
-        <h2 class="text">{{ class.name }}</h2>
-        <p class="text">Type: {{ class.type }}</p>
-        <p class="text">Date: {{ class.date }}</p>
-        <p class="text">Time: {{ class.time }}</p>
-        <div class="select-container">
-            <input type="checkbox" name="class_id" id="class_id" value="{{ class.id }}">
-            <label for="class_id">Book class</label>
-        </div>
-    </div>
-    {% endif %}
+        {% if class.id not in all_class_ids %}
+                <div class="view-member">
+                    <h2 class="text">{{ class.name }}</h2>
+                    <p class="text">Type: {{ class.type }}</p>
+                    <p class="text">Date: {{ class.date }}</p>
+                    <p class="text">Time: {{ class.time }}</p>
+                    {% if class.members|length >= class.capacity %}
+                        <p>Class full</p>
+                    {% endif %}
+                    {% if class.members|length < class.capacity %}
+                        <div class="select-container">
+                            <input type="checkbox" name="class_id" id="class_id" value="{{ class.id }}">
+                            <label for="class_id">Book class</label>
+                        </div>
+                    {% endif%}
+                </div>
+        {% endif %}
     {% endfor %}
 </section>
 </form>  

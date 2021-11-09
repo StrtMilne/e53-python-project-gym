@@ -20,23 +20,28 @@
         </div>
         <div>
             <label for="member-status" class="form-title">Member status: </label>
-            <select name="member-status" id="member-status" 
-            value="{% if member.active == True %}
-            Active
-            {% endif %}
-            {% if member.active == False %}
-            Inactive
-            {% endif %}
-            " class="form-input" required>
-                <option value="active">Active</option>
-                <option value="inactive">Inactive</option>
+            <select name="member-status" id="member-status" class="form-input" required>
+                <option value="active"
+                {% if member.active%}
+                selected="selected"
+                {% endif%}>Active</option>
+                <option value="inactive"
+                {% if not member.active%}
+                selected="selected"
+                {%endif %}>Inactive</option>
             </select>
         </div>
         <div>
             <label for="premium-status" class="form-title">Membership type: </label>
             <select name="premium-status" id="premium-status" class="form-input" required>
-                <option value="standard">Standard</option>
-                <option value="premium">Premium</option>
+                <option value="standard" 
+                {% if not member.premium %}
+                selected="selected"
+                {% endif %}>Standard</option>
+                <option value="premium"
+                {% if member.premium %}
+                selected="selected"
+                {% endif %}>Premium</option>
             </select>
         </div>
         <button type="submit" class="submit-button">Update member</button>
