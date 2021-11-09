@@ -60,7 +60,7 @@ def unbooked_classes(id):
     results = run_sql(sql, values)
 
     for row in results:
-        gym_class = Class(row["name"], row["type"], row["date"], row["time"], row["capacity"], row["id"])
+        gym_class = Class(row["name"], row["type"], row["date"], row["time"], row["capacity"], row["peak"], row["id"])
         gym_class.members = classes_repository.member_ids(row["id"])
         classes.append(gym_class)
     return classes

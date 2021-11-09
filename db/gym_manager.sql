@@ -18,7 +18,8 @@ CREATE TABLE classes (
     type VARCHAR(255),
     date DATE,
     time TIME,
-    capacity INT
+    capacity INT,
+    peak BOOLEAN
 );
 
 CREATE TABLE attendances (

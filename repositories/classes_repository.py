@@ -5,8 +5,8 @@ from models.member import Member
 
 
 def save(gym_class):
-    sql = "INSERT INTO classes (name, type, date, time, capacity) VALUES (%s, %s, %s, %s, %s) RETURNING *"
-    values = [gym_class.name, gym_class.type, gym_class.date, gym_class.time, gym_class.capacity]
+    sql = "INSERT INTO classes (name, type, date, time, capacity, peak) VALUES (%s, %s, %s, %s, %s, %s) RETURNING *"
+    values = [gym_class.name, gym_class.type, gym_class.date, gym_class.time, gym_class.capacity, gym_class.peak]
     results = run_sql(sql, values)
 
     id = results[0]['id']
@@ -35,8 +35,8 @@ def select(id):
 
 
 def update(gym_class):
-    sql = "UPDATE classes SET (name, type, date, time, capacity) = (%s, %s, %s, %s, %s) WHERE id = %s"
-    values = [gym_class.name, gym_class.type, gym_class.date, gym_class.time, gym_class.capacity, gym_class.id]
+    sql = "UPDATE classes SET (name, type, date, time, capacity, peak) = (%s, %s, %s, %s, %s) WHERE id = %s"
+    values = [gym_class.name, gym_class.type, gym_class.date, gym_class.time, gym_class.capacity, gym_class.peak, gym_class.id]
     run_sql(sql, values)
     return gym_class
 

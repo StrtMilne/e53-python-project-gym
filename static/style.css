@@ -188,3 +188,46 @@ li:hover {
 .add-member:hover {
     background-color: rgb(0, 109, 128);
 }
+
+.inactive {
+    background-color: rgb(129, 129, 129);
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.premium {
+    color: rgb(255, 171, 16);
+    font-weight: bold;
+}
+
+.active {
+    color: green;
+}
+
+.inactive-status {
+    color: red;
+}
+
+.select-container {
+    margin: 0;
+    padding: 10px 20px 10px 20px;
+    background-color: orange;
+    color: black;
+    width: auto;
+    transition: 1s;
+    display: inline-block;
+}
+
+.remove-container {
+    margin: 0;
+    padding: 10px 20px 10px 20px;
+    background-color: red;
+    color: black;
+    width: auto;
+    transition: 1s;
+}
+
+.inline {
+    display: inline-block;
+}

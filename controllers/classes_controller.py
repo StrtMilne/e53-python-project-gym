@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, request, Blueprint
 from models.attendance import Attendance
 from models.gym_class import Class
+from datetime import time, datetime
 
 import repositories.classes_repository as classes_repository
 import repositories.members_repository as members_repository
@@ -40,7 +41,7 @@ def create_class():
     name = request.form["name"]
     type = request.form["type"]
     date = request.form["date"]
-    time = request.form["time"]
+    time = datetime.strptime(request.form["time"], "%H:%M").time()
     capacity = request.form["capacity"]
     gym_class = Class(name, type, date, time, capacity)
     classes_repository.save(gym_class)
