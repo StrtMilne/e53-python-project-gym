@@ -2,6 +2,29 @@
 
 {% block content %}
 <h1>{{ member.first_name }} {{ member.last_name }}</h1>
+
+<article class="view-member {% if member.active == False %} inactive {% endif %}">
+    <h2 class="text">ID number: {{ member.id }}</h2>
+    <p class="text">Date of birth: {{ member.dob }}</p>
+    <p class="text">Joined: {{ member.join_date }}</p>
+    <p class="text">Member status: {% if member.active == True %}
+        <span class="active">Active</span>
+        {% endif %}
+        {% if member.active == False %}
+        <span class="inactive-status">Inactive</span>
+        {% endif %}
+    <p class="text">Membership type: {% if member.premium == True %}
+        <span class="premium">Premium</span>
+        {% endif %}
+        {% if member.premium == False %}
+        Standard
+        {% endif %}
+    </p>
+    <div class="button-container">
+        <a href="/members/{{ member.id }}/edit" class="edit link-button">Edit member</a>
+    </div>
+</article>
+
 <h2>Booked classes:</h2>
     {% if booked_classes == [] %}
     <h3>No classes booked yet!</h3>
