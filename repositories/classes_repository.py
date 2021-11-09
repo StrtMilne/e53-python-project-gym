@@ -2,6 +2,7 @@ from db.run_sql import run_sql
 
 from models.gym_class import Class
 from models.member import Member
+from datetime import datetime
 
 
 def save(gym_class):
@@ -30,7 +31,11 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-        gym_class = Class(result["name"], result["type"], result["date"], result["time"], result["capacity"], result["id"])
+
+        # time = result["time"]
+        # print(datetime.strftime(time, "%H:%M"))
+
+        gym_class = Class(result["name"], result["type"], result["date"], time, result["capacity"], result["id"])
     return gym_class
 
 
