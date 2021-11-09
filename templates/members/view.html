@@ -13,6 +13,12 @@
                 {% if member.active == False %}
                 Inactive
                 {% endif %}
+            <p class="text">Membership type: {% if member.premium == True %}
+                Premium
+                {% endif %}
+                {% if member.active == False %}
+                Standard
+                {% endif %}
             </p>
             <div class="button-container">
                 <a href="/members/{{ member.id }}/view" class="view-items link-button">See classes</a>

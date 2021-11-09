@@ -25,13 +25,16 @@ def update_member(id):
     join_date = request.form["join_date"]
     if request.form["member-status"] == "active":
         active = True
-    if request.form["member-status"] == "inactive":
+    else:
         active = False
-    if request.form["member-status"] == "premium":
+
+    if request.form["premium-status"] == "premium":
         premium = True
-    if request.form["member-status"] == "standard":
+    else:
         premium = False
-    member = Member(first_name, last_name, dob, join_date, active, id)
+
+    member = Member(first_name, last_name, dob, join_date, active, premium, id)
+    print(vars(member))
     members_repository.update(member)
     return redirect("/members")
 
