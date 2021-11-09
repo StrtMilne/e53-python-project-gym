@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>{{ member.first_name }} {{ member.last_name }}</h1>
+<h1 class="view-titles">{{ member.first_name }} {{ member.last_name }}</h1>
 
 <article class="view-member {% if member.active == False %} inactive {% endif %}">
     <h2 class="text">ID number: {{ member.id }}</h2>
@@ -25,9 +25,9 @@
     </div>
 </article>
 
-<h2>Booked classes:</h2>
+<h2 class="view-titles">Booked classes:</h2>
     {% if booked_classes == [] %}
-    <h3>No classes booked yet!</h3>
+    <h3 class="view-titles">No classes booked yet!</h3>
     {% endif %}
 <section class="view-container">
     {% for class in booked_classes %}
@@ -42,16 +42,26 @@
     </div>
     {% endfor %}
 </section>
-    <!-- <hr> -->
-<!-- <h2>Sign up for more:</h2> #Not part of MVP
+    <hr>
+<form action="/members/{{ member.id }}/booked_classes" method="POST">
+<h2 class="spaces">Book more classes</h2> 
+<button type="submit" class="submit-button">Add members</button>
+
 <section class="view-container">
     {% for class in all_classes %}
-    <div>
-        <h2>{{ class.name }}</h2>
-        <p>Type: {{ class.type }}</p>
-        <p>Date: {{ class.date }}</p>
-        <p>Time: {{ class.time }}</p>
+    {% if class.id not in all_class_ids %}
+    <div class="view-member">
+        <h2 class="text">{{ class.name }}</h2>
+        <p class="text">Type: {{ class.type }}</p>
+        <p class="text">Date: {{ class.date }}</p>
+        <p class="text">Time: {{ class.time }}</p>
+        <div class="select-container">
+            <input type="checkbox" name="class_id" id="class_id" value="{{ class.id }}">
+            <label for="class_id">Book class</label>
+        </div>
     </div>
-    {% endfor %} -->
+    {% endif %}
+    {% endfor %}
 </section>
+</form>  
 {% endblock %}

@@ -1,9 +1,11 @@
 from flask import Flask, render_template, redirect, Blueprint, request
 from models.member import Member
 from models.gym_class import Class
+from models.attendance import Attendance
 
 import repositories.members_repository as members_repository
 import repositories.classes_repository as classes_repository
+import repositories.attendances_repository as attendances_repository
 
 members_blueprint = Blueprint("members", __name__)
 
@@ -65,10 +67,20 @@ def booked_classes(id):
     classes = members_repository.classes(id)
     # unbooked_classes = members_repository.unbooked_classes(id) #Probably not needed
     all_classes = classes_repository.select_all()
+    class_ids = members_repository.class_ids(id)
     member = members_repository.select(id)
-    return render_template("/members/booked_classes.html", title="Booked classes", member=member, booked_classes=classes, all_classes=all_classes, member_id=id)
+    return render_template("/members/booked_classes.html", title="Booked classes", member=member, booked_classes=classes, all_classes=all_classes, all_class_ids=class_ids, member_id=id)
 
 @members_blueprint.route("/members/booked_classes/<member_id>/<class_id>/remove")
 def remove_member(member_id, class_id):
     classes_repository.member_remove(member_id, class_id)
+    return redirect("/members")
+
+@members_blueprint.route("/members/<member_id>/booked_classes", methods=["POST"])
+def add_multiple_classes(member_id):
+    classes = []
+    classes = request.form.to_dict(flat=False)["class_id"]
+    for row in classes:
+        attendance = Attendance(member_id, row)
+        attendances_repository.save(attendance)
     return redirect("/members")

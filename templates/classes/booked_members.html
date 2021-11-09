@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>{{ class_name }}</h1>
-<h2>Booked members:</h2>
+<h1 class="view-titles">{{ class_name }}</h1>
+<h2 class="view-titles">Booked members:</h2>
     {% if booked_members == [] %}
-    <h3>No sign-ups yet!</h3>
+    <h3 class="view-titles">No sign-ups yet!</h3>
     {% endif %}
 <section class="view-container">
     {% for member in booked_members %}
@@ -26,8 +26,7 @@
     <hr>
 <section>
     <form action="/classes/{{ gym_class.id }}/booked_members" method="POST">
-        <h3>Available spaces: {{ gym_class.capacity - number_attendees }}</h3>
-        <h3 class="inline">Sign up more</h3>
+        <h3 class="spaces">Available spaces: {{ gym_class.capacity - number_attendees }}</h3>
         <button type="submit" class="submit-button">Add members</button>
         <div class="view-container">
             {% for member in all_members %}

@@ -5,8 +5,6 @@
     {% for member in all_members %}
         <article class="member-item {% if member.active == False %} inactive {% endif %}">
             <h2 class="text">{{ member.id }}: {{ member.last_name }}, {{ member.first_name }}</h2>
-            <p class="text">Date of birth: {{ member.dob }}</p>
-            <p class="text">Joined: {{ member.join_date }}</p>
             <p class="text">Member status: {% if member.active == True %}
                 <span class="active">Active</span>
                 {% endif %}

@@ -69,3 +69,13 @@ def class_remove(member_id, class_id):
     sql = "DELETE FROM attendances WHERE member_id = %s AND class_id = %s"
     values = [member_id, class_id]
     run_sql(sql, values)
+
+def class_ids(id):
+    class_ids = []
+    sql = "SELECT attendances.class_id FROM classes INNER JOIN attendances ON attendances.class_id = classes.id INNER JOIN members ON members.id = attendances.member_id WHERE members.id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+    for row in results:
+        id = row["class_id"]
+        class_ids.append(id)
+    return class_ids

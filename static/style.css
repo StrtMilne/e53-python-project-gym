@@ -6,8 +6,8 @@ body {
         "header header"
         "nav main"
         "footer footer";
-    grid-template-columns: 150px auto;
-    grid-template-rows: 100px auto 120px;
+    grid-template-columns: 120px auto;
+    grid-template-rows: 120px auto 120px;
 }
 
 main {
@@ -15,7 +15,7 @@ main {
 }
 
 nav {
-    background-color: blue;
+    background-color: rgb(70, 78, 121);
     color: white;
     list-style-type: none;
     grid-area: nav;
@@ -27,7 +27,7 @@ a {
 }
 
 footer {
-    background-color: green;
+    background-color: rgb(10, 123, 28);
     color: white;
     display: grid;
     align-items: center;
@@ -39,7 +39,7 @@ footer {
 }
 
 header {
-    background-color: green;
+    background-color: rgb(10, 123, 28);;
     display: flex;
     flex-direction: row;
     grid-area: header;
@@ -51,9 +51,9 @@ header {
 }
 
 .home-button {
-    background-color: rgb(2, 82, 2);
+    background-color: rgb(18, 88, 29);
     justify-content: center;
-    width: 100px
+    width: 120px
 }
 
 .view-container {
@@ -69,7 +69,7 @@ header {
 
 .member-item {
     background-color: lightgrey;
-    margin: 5px;
+    margin: 15px 5px;
     display: flex;
     flex-direction: column;
 }
@@ -77,7 +77,7 @@ header {
 .view-items {
     margin: 0;
     padding: 10px 20px 10px 20px;
-    background-color: green;
+    background-color: rgb(10, 123, 28);;
     color: #000000;
     width: auto;
     transition: 1s;
@@ -112,6 +112,7 @@ header {
     flex-direction: column;
     width: 300px;
     align-items: center;
+    padding: 20px;
 }
 
 .form-input {
@@ -120,10 +121,11 @@ header {
     border: 0;
     padding: 10px;
     margin: 5px;
+    width: 200px;
 }
 
 .submit-button {
-    background-color: green;
+    background-color: rgb(10, 123, 28);;
     color: white;
     border: 0;
     padding: 10px;
@@ -144,6 +146,7 @@ header {
 }
 
 ul {
+    padding: 0;
     list-style: none;
     display: flex;
     flex-direction: column;
@@ -152,10 +155,11 @@ ul {
 li {
     padding: 15px 0 15px 10px;
     transition: 1s;
+    text-align: left;
 }
 
 li:hover {
-    background-color: rgb(107, 0, 247);
+    background-color: rgb(17, 0, 173);
 }
 
 .link-button {
@@ -177,7 +181,7 @@ li:hover {
 .add-member {
     margin: 0;
     padding: 10px 20px 10px 20px;
-    background-color: green;
+    background-color: rgb(10, 123, 28);;
     color: #000000;
     width: auto;
     text-align: center;
@@ -191,7 +195,7 @@ li:hover {
 
 .inactive {
     background-color: rgb(129, 129, 129);
-    margin: 5px;
+    margin: margin: 15px 5px;;
     display: flex;
     flex-direction: column;
 }
@@ -202,7 +206,7 @@ li:hover {
 }
 
 .active {
-    color: green;
+    color: rgb(10, 123, 28);;
 }
 
 .inactive-status {
@@ -260,4 +264,27 @@ li:hover {
     margin: 0;
     display: flex;
     flex-direction: column;
+}
+
+.dashboard {
+    padding: 0 0 0 20px;
+}
+
+.base-title {
+    padding: 0 0 0 20px;
+    font-size: 50px;
+}
+
+.form-title {
+    display: inline-block;
+    width: 200px;
+}
+
+.spaces {
+    display: inline-block;
+    padding: 0 10px 0 30px;
+}
+
+.view-titles {
+    padding: 0 0 0 30px;
 }
