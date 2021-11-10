@@ -21,7 +21,7 @@ def select_all():
     for row in results:
         member = Member(row["first_name"], row["last_name"], row["dob"], row["join_date"], row["active"], row["premium"], row["id"])
         members.append(member)
-
+    members = sorted(members, key=lambda n : n["last_name"])
     return members
 
 def select(id):
