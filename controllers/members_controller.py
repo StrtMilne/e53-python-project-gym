@@ -36,9 +36,14 @@ def update_member(id):
         premium = False
 
     member = Member(first_name, last_name, dob, join_date, active, premium, id)
-    print(vars(member))
     members_repository.update(member)
-    return redirect("/members")
+
+    classes = []
+    classes = members_repository.classes(id)
+    all_classes = classes_repository.select_all()
+    class_ids = members_repository.class_ids(id)
+
+    return render_template("/members/booked_classes.html", title="Booked classes", member=member, booked_classes=classes, all_classes=all_classes, all_class_ids=class_ids, member_id=id)
 
 @members_blueprint.route("/members/new")
 def add_member():
@@ -56,16 +61,13 @@ def create_member():
     if request.form["premium-status"] == "standard":
         premium = False
     member = Member(first_name, last_name, dob, join_date, active, premium)
-    print(vars(member))
     members_repository.save(member)
-
     return redirect("/members")
 
 @members_blueprint.route("/members/<id>/view")
 def booked_classes(id):
     classes = []
     classes = members_repository.classes(id)
-    # unbooked_classes = members_repository.unbooked_classes(id) #Probably not needed
     all_classes = classes_repository.select_all()
     class_ids = members_repository.class_ids(id)
     member = members_repository.select(id)
@@ -74,13 +76,26 @@ def booked_classes(id):
 @members_blueprint.route("/members/booked_classes/<member_id>/<class_id>/remove")
 def remove_member(member_id, class_id):
     classes_repository.member_remove(member_id, class_id)
-    return redirect("/members")
+
+    classes = []
+    classes = members_repository.classes(member_id)
+    all_classes = classes_repository.select_all()
+    class_ids = members_repository.class_ids(member_id)
+    member = members_repository.select(member_id)
+    return render_template("/members/booked_classes.html", title="Booked classes", member=member, booked_classes=classes, all_classes=all_classes, all_class_ids=class_ids, member_id=member_id)
 
 @members_blueprint.route("/members/<member_id>/booked_classes", methods=["POST"])
 def add_multiple_classes(member_id):
     classes = []
     classes = request.form.to_dict(flat=False)["class_id"]
+    
     for row in classes:
         attendance = Attendance(member_id, row)
         attendances_repository.save(attendance)
-    return redirect("/members")
+    
+    classes = []
+    classes = members_repository.classes(member_id)
+    all_classes = classes_repository.select_all()
+    class_ids = members_repository.class_ids(member_id)
+    member = members_repository.select(member_id)
+    return render_template("/members/booked_classes.html", title="Booked classes", member=member, booked_classes=classes, all_classes=all_classes, all_class_ids=class_ids, member_id=member_id)

@@ -31,7 +31,16 @@ def update_class(id):
     capacity = request.form["capacity"]
     gym_class = Class(name, type, date, time, capacity, id)
     classes_repository.update(gym_class)
-    return redirect("/classes")
+    
+    members = []
+    members = classes_repository.members(id)
+    all_members = members_repository.select_all()
+    gym_class = classes_repository.select(id)
+    class_name = gym_class.name
+    member_ids = classes_repository.member_ids(id)
+    number_attendees = len(members)
+
+    return render_template("/classes/booked_members.html", title="Booked members", gym_class=gym_class, class_name=class_name, booked_members=members, all_members=all_members, all_member_ids=member_ids, number_attendees=number_attendees, id=id)
 
 @classes_blueprint.route("/classes/new")
 def add_class():
@@ -70,7 +79,16 @@ def booked_members(id):
 @classes_blueprint.route("/classes/booked_members/<member_id>/<class_id>/remove")
 def remove_member(member_id, class_id):
     classes_repository.member_remove(member_id, class_id)
-    return redirect("/classes")
+
+    members = []
+    members = classes_repository.members(class_id)
+    all_members = members_repository.select_all()
+    gym_class = classes_repository.select(class_id)
+    class_name = gym_class.name
+    member_ids = classes_repository.member_ids(class_id)
+    number_attendees = len(members)
+
+    return render_template("/classes/booked_members.html", title="Booked members", gym_class=gym_class, class_name=class_name, booked_members=members, all_members=all_members, all_member_ids=member_ids, number_attendees=number_attendees, id=class_id)
 
 @classes_blueprint.route("/classes/<class_id>/booked_members", methods=["POST"])
 def add_multiple_members(class_id):
@@ -79,7 +97,16 @@ def add_multiple_members(class_id):
     for row in members:
         attendance = Attendance(row, class_id)
         attendances_repository.save(attendance)
-    return redirect("/classes")
+    
+    members = []
+    members = classes_repository.members(class_id)
+    all_members = members_repository.select_all()
+    gym_class = classes_repository.select(class_id)
+    class_name = gym_class.name
+    member_ids = classes_repository.member_ids(class_id)
+    number_attendees = len(members)
+
+    return render_template("/classes/booked_members.html", title="Booked members", gym_class=gym_class, class_name=class_name, booked_members=members, all_members=all_members, all_member_ids=member_ids, number_attendees=number_attendees, id=class_id)
 
 @classes_blueprint.route("/classes/<id>/delete")
 def delete_of_class(id):

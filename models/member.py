@@ -8,7 +8,7 @@ class Member:
         self.active = active
         self.premium = premium
         self.id = id
-        self.members = {
+        self.properties = {
             "first_name": first_name,
             "last_name": last_name,
             "dob": dob,
@@ -19,4 +19,4 @@ class Member:
         }
     
     def __getitem__(self, key):
-        return self.members[key]
+        return self.properties[key]

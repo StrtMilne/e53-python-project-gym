@@ -11,7 +11,7 @@ class Class:
         self.members = []
         self.peak = self.peak_time(self.time)
         self.id = id
-        self.classes = {
+        self.properties = {
             "name": name,
             "type": type,
             "date": date,
@@ -23,7 +23,7 @@ class Class:
         }
 
     def __getitem__(self, key):
-        return self.classes[key]
+        return self.properties[key]
 
     def add_member_to_class(self, id):
         self.members.append(id)
