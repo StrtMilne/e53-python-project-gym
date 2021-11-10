@@ -26,8 +26,7 @@ def update_class(id):
     name = request.form["name"]
     type = request.form["type"]
     date = request.form["date"]
-    #WHAT IS HAPPENING HERE? check classes_repository select method?
-    time = datetime.strptime(request.form["time"], "%H:%M").time()
+    time = datetime.strptime(request.form["time"], "%H:%M:%S").time()
     capacity = request.form["capacity"]
     gym_class = Class(name, type, date, time, capacity, id)
     classes_repository.update(gym_class)

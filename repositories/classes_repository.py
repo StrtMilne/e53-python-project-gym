@@ -31,16 +31,13 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
-
-        # time = result["time"]
-        # print(datetime.strftime(time, "%H:%M"))
-
+        time = result["time"]
         gym_class = Class(result["name"], result["type"], result["date"], time, result["capacity"], result["id"])
     return gym_class
 
 
 def update(gym_class):
-    sql = "UPDATE classes SET (name, type, date, time, capacity, peak) = (%s, %s, %s, %s, %s) WHERE id = %s"
+    sql = "UPDATE classes SET (name, type, date, time, capacity, peak) = (%s, %s, %s, %s, %s, %s) WHERE id = %s"
     values = [gym_class.name, gym_class.type, gym_class.date, gym_class.time, gym_class.capacity, gym_class.peak, gym_class.id]
     run_sql(sql, values)
     return gym_class
