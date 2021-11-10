@@ -42,7 +42,6 @@
                 {% if not member.premium %} 
                     Standard
                 {% endif %}</p>
-                <p class="text">Member ID: {{ member.id }}</p>
                 {% if number_attendees < gym_class.capacity %}
                 <div class="select-container">
                     <input type="checkbox" name="member_id" id="member_id" value="{{ member.id }}">

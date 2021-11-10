@@ -26,7 +26,6 @@ def update_class(id):
     name = request.form["name"]
     type = request.form["type"]
     date = request.form["date"]
-    print(str(request.form["time"]))
     formatted_time = request.form["time"][0:5]
     time = datetime.strptime(formatted_time, "%H:%M").time()
     capacity = request.form["capacity"]
