@@ -316,6 +316,18 @@ li:hover {
     width: auto;
 }
 
+.grey {
+    background-color: lightgrey;
+    margin: 0;
+    padding: 20px;
+}
+
+.darkgrey {
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+    padding: 20px;
+}
+
 @media (max-width: 800px) {
     body {
         margin: 0;

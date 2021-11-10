@@ -35,33 +35,33 @@
         <button type="submit" class="submit-button">Add members</button>
         <div class="view-container">
             {% for member in all_members %}
-            {% if member.active == True %}
-            {% if member.id not in all_member_ids %}
-            {% if member.premium or not gym_class.peak %}
-            {% if member_name == None or member.last_name == member_name %}
-            <div class="member-item">
-                <h3 class="text">{{ member.id }}: {{ member.last_name }}, {{ member.first_name }}</h3>
-                <p class="text">Member status: <span class="active">Active</span></p>
-                <p class="text">Membership type: {% if member.premium %} 
-                    <span class="premium">Premium</span>
+                {% if member.active == True %}
+                    {% if member.id not in all_member_ids %}
+                        {% if member.premium or not gym_class.peak %}
+                            {% if member_name == None or member.last_name == member_name %}
+                            <div class="member-item">
+                                <h3 class="text">{{ member.id }}: {{ member.last_name }}, {{ member.first_name }}</h3>
+                                <p class="text">Member status: <span class="active">Active</span></p>
+                                <p class="text">Membership type: {% if member.premium %} 
+                                    <span class="premium">Premium</span>
+                                {% endif %}
+                                {% if not member.premium %} 
+                                    Standard
+                                {% endif %}</p>
+                                {% if number_attendees < gym_class.capacity %}
+                                <div class="select-container">
+                                    <input type="checkbox" name="member_id" id="member_id" value="{{ member.id }}">
+                                    <label for="member_id">Add to class</label>
+                                </div>
+                                {% endif %}
+                                {% if number_attendees >= gym_class.capacity %}
+                                <p class="full">Class full</p>
+                                {% endif %}
+                            </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
                 {% endif %}
-                {% if not member.premium %} 
-                    Standard
-                {% endif %}</p>
-                {% if number_attendees < gym_class.capacity %}
-                <div class="select-container">
-                    <input type="checkbox" name="member_id" id="member_id" value="{{ member.id }}">
-                    <label for="member_id">Add to class</label>
-                </div>
-                {% endif %}
-                {% if number_attendees >= gym_class.capacity %}
-                <p class="full">Class full</p>
-                {% endif %}
-            </div>
-            {% endif %}
-            {% endif %}
-            {% endif %}
-            {% endif %}
             {% endfor %}
         </div>
     </form>
