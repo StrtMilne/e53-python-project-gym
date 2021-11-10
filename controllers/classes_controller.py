@@ -14,7 +14,8 @@ classes_blueprint = Blueprint("classes", __name__)
 @classes_blueprint.route("/classes")
 def classes():
     classes = classes_repository.select_all()
-    return render_template("/classes/view.html", title="View classes", all_classes=classes)
+    class_search = None
+    return render_template("/classes/view.html", title="View classes", all_classes=classes, class_search=class_search)
 
 @classes_blueprint.route("/classes/<id>/edit")
 def edit_class(id):
@@ -129,3 +130,10 @@ def search_member(id):
     member_ids = classes_repository.member_ids(id)
     number_attendees = len(members)
     return render_template("/classes/booked_members.html", title="Booked members", gym_class=gym_class, class_name=class_name, booked_members=members, all_members=all_members, all_member_ids=member_ids, number_attendees=number_attendees, id=id, member_name=member_name)
+
+@classes_blueprint.route("/classes/member_search", methods=["POST"])
+def search_class():
+    class_search = None
+    class_search = request.form["search"]
+    classes = classes_repository.select_all()
+    return render_template("/classes/view.html", title="View classes", all_classes=classes, class_search=class_search)

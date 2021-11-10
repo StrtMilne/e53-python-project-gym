@@ -1,8 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
+<form action="/classes/member_search" method="POST">
+    <label for="class_search" class="text">Search for a member:</label>
+    <input type="text" name="search" id="search" placeholder="Enter class name" class="form-input">
+    <button type="submit" class="submit-button">Search</button>
+</form>
 <section class="view-container">
     {% for class in all_classes %}
+        {% if class_search == None or class.name == class_search %}
         <article class="class-item">
             <div class="class-heading">
             <h2 class="text inline short">{{ class.name }}</h2>
@@ -17,6 +23,7 @@
                 <a href="/classes/{{ class.id }}/edit" class="edit link-button">Edit class</a>
             </div> 
         </article>
+        {% endif %}
     {% endfor %}
 </section>
 {% endblock %}
