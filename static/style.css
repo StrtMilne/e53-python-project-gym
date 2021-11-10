@@ -307,6 +307,14 @@ li:hover {
     height: 80px;
 }
 
+.full {
+    margin: 0;
+    padding: 10px 20px 10px 20px;
+    background-color: rgb(255, 102, 0);
+    color: black;
+    width: auto;
+}
+
 @media (max-width: 800px) {
     body {
         margin: 0;

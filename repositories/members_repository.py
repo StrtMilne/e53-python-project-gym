@@ -50,6 +50,7 @@ def classes(id):
         gym_class = Class(row["name"], row["type"], row["date"], row["time"], row["capacity"], row["id"])
         gym_class.members = classes_repository.member_ids(row["id"])
         classes.append(gym_class)
+    classes = sorted(classes, key=lambda n : n["date"])
     return classes
 
 def unbooked_classes(id):
