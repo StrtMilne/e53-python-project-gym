@@ -131,7 +131,7 @@ def search_member(id):
     number_attendees = len(members)
     return render_template("/classes/booked_members.html", title="Booked members", gym_class=gym_class, class_name=class_name, booked_members=members, all_members=all_members, all_member_ids=member_ids, number_attendees=number_attendees, id=id, member_name=member_name)
 
-@classes_blueprint.route("/classes/member_search", methods=["POST"])
+@classes_blueprint.route("/classes/class_search", methods=["POST"])
 def search_class():
     class_search = None
     class_search = request.form["search"]

@@ -12,7 +12,8 @@ members_blueprint = Blueprint("members", __name__)
 @members_blueprint.route("/members")
 def members():
     members = members_repository.select_all()
-    return render_template("/members/view.html", title="All members", all_members=members)
+    member_search = None
+    return render_template("/members/view.html", title="All members", all_members=members, member_search=member_search)
 
 @members_blueprint.route("/members/<id>/edit")
 def edit_member(id):
@@ -88,7 +89,7 @@ def remove_member(member_id, class_id):
 def add_multiple_classes(member_id):
     classes = []
     classes = request.form.to_dict(flat=False)["class_id"]
-    
+
     for row in classes:
         attendance = Attendance(member_id, row)
         attendances_repository.save(attendance)
@@ -99,3 +100,10 @@ def add_multiple_classes(member_id):
     class_ids = members_repository.class_ids(member_id)
     member = members_repository.select(member_id)
     return render_template("/members/booked_classes.html", title="Booked classes", member=member, booked_classes=classes, all_classes=all_classes, all_class_ids=class_ids, member_id=member_id)
+
+@members_blueprint.route("/members/member_search", methods=["POST"])
+def member_search():
+    members = members_repository.select_all()
+    member_search = None
+    member_search = request.form["search"]
+    return render_template("/members/view.html", title="All members", all_members=members, member_search=member_search)

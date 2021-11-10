@@ -1,8 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
+<form action="/members/member_search" method="POST">
+    <label for="member_search" class="text">Search for a member:</label>
+    <input type="text" name="search" id="search" placeholder="Enter last name" class="form-input">
+    <button type="submit" class="submit-button">Search</button>
+</form>
 <section class="view-container">
     {% for member in all_members %}
+        {% if member_search == None or member.last_name == member_search %}
         <article class="member-item {% if member.active == False %} inactive {% endif %}">
             <h2 class="text">{{ member.id }}: {{ member.last_name }}, {{ member.first_name }}</h2>
             <p class="text">Member status: {% if member.active == True %}
@@ -23,6 +29,7 @@
                 <a href="/members/{{ member.id }}/edit" class="edit link-button">Edit member</a>
             </div>
         </article>
+        {% endif %}
     {% endfor %}
 </section>
 {% endblock %}
