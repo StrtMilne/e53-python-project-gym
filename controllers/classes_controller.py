@@ -66,7 +66,8 @@ def booked_members(id):
     class_name = gym_class.name
     member_ids = classes_repository.member_ids(id)
     number_attendees = len(members)
-    return render_template("/classes/booked_members.html", title="Booked members", gym_class=gym_class, class_name=class_name, booked_members=members, all_members=all_members, all_member_ids=member_ids, number_attendees=number_attendees, id=id)
+    member_name = None
+    return render_template("/classes/booked_members.html", title="Booked members", gym_class=gym_class, class_name=class_name, booked_members=members, all_members=all_members, all_member_ids=member_ids, number_attendees=number_attendees, id=id, member_name=member_name)
 
 # @classes_blueprint.route("/classes/<id>/<class_id>/add_member")
 # def add_member_to_class(id, class_id):
@@ -87,8 +88,9 @@ def remove_member(member_id, class_id):
     class_name = gym_class.name
     member_ids = classes_repository.member_ids(class_id)
     number_attendees = len(members)
+    member_name = None
 
-    return render_template("/classes/booked_members.html", title="Booked members", gym_class=gym_class, class_name=class_name, booked_members=members, all_members=all_members, all_member_ids=member_ids, number_attendees=number_attendees, id=class_id)
+    return render_template("/classes/booked_members.html", title="Booked members", gym_class=gym_class, class_name=class_name, booked_members=members, all_members=all_members, all_member_ids=member_ids, number_attendees=number_attendees, id=class_id, member_name=member_name)
 
 @classes_blueprint.route("/classes/<class_id>/booked_members", methods=["POST"])
 def add_multiple_members(class_id):
@@ -105,11 +107,25 @@ def add_multiple_members(class_id):
     class_name = gym_class.name
     member_ids = classes_repository.member_ids(class_id)
     number_attendees = len(members)
+    member_name = None
 
-    return render_template("/classes/booked_members.html", title="Booked members", gym_class=gym_class, class_name=class_name, booked_members=members, all_members=all_members, all_member_ids=member_ids, number_attendees=number_attendees, id=class_id)
+    return render_template("/classes/booked_members.html", title="Booked members", gym_class=gym_class, class_name=class_name, booked_members=members, all_members=all_members, all_member_ids=member_ids, number_attendees=number_attendees, id=class_id, member_name=member_name)
 
 @classes_blueprint.route("/classes/<id>/delete")
 def delete_of_class(id):
     attendances_repository.delete_class_in_attendances(id)
     classes_repository.delete_class(id)
     return redirect("/classes")
+
+@classes_blueprint.route("/classes/<id>/member_search", methods=["POST"])
+def search_member(id):
+    member_name = None
+    member_name = request.form["search"]
+    members = []
+    members = classes_repository.members(id)
+    all_members = members_repository.select_all()
+    gym_class = classes_repository.select(id)
+    class_name = gym_class.name
+    member_ids = classes_repository.member_ids(id)
+    number_attendees = len(members)
+    return render_template("/classes/booked_members.html", title="Booked members", gym_class=gym_class, class_name=class_name, booked_members=members, all_members=all_members, all_member_ids=member_ids, number_attendees=number_attendees, id=id, member_name=member_name)
