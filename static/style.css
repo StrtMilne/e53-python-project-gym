@@ -53,7 +53,10 @@ header {
 .home-button {
     background-color: rgb(18, 88, 29);
     justify-content: center;
-    width: 120px
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .view-container {
@@ -242,11 +245,14 @@ li:hover {
 
 .delete-button {
     margin: 0;
-    padding: 10px 20px 10px 20px;
+    padding: 0;
     background-color: red;
     color: black;
     width: 36px;
     transition: 1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .delete-button:hover {
@@ -272,7 +278,9 @@ li:hover {
 
 .base-title {
     padding: 0 0 0 20px;
-    font-size: 50px;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 30px;
 }
 
 .form-title {
@@ -289,6 +297,16 @@ li:hover {
     padding: 0 0 0 30px;
 }
 
+.bin {
+    width: 36px; 
+    height: 36px; 
+}
+
+.home {
+    width: 80px;
+    height: 80px;
+}
+
 @media (max-width: 800px) {
     body {
         margin: 0;
@@ -300,7 +318,7 @@ li:hover {
             "main main"
             "footer footer";
         grid-template-columns: 120px auto;
-        grid-template-rows: 120px 80px auto 120px;
+        grid-template-rows: 120px 50px auto 120px;
     }
     ul {
         padding: 0;
@@ -308,6 +326,13 @@ li:hover {
         display: flex;
         flex-direction: row;
     }
+
+    li {
+        padding: 0 10px;
+        transition: 1s;
+        text-align: left;
+    }
+
     header {
         background-color: rgb(10, 123, 28);;
         display: flex;

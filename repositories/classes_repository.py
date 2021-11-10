@@ -31,6 +31,16 @@ def select(id):
     result = run_sql(sql, values)[0]
 
     if result is not None:
+        time_str = str(result["time"])
+        # hours = time_str[0:2]
+        # minutes = time_str[3:5]
+        # if hours[0] == 0:
+        #     hours = hours[1]
+        # if minutes[0] == 0:
+        #     minutes = minutes[1]
+        # minutes = int(minutes)
+        # hours = int(hours)
+        # time = datetime.time(hours, minutes)
         time = result["time"]
         gym_class = Class(result["name"], result["type"], result["date"], time, result["capacity"], result["id"])
     return gym_class
