@@ -45,7 +45,7 @@ def update(gym_class):
 
 def members(id):
     members = []
-    sql = "SELECT members.* FROM members INNER JOIN attendances ON attendances.member_id = members.id INNER JOIN classes ON classes.id = attendances.class_id WHERE classes.id = %s"
+    sql = "SELECT members.* FROM members INNER JOIN attendances ON attendances.member_id = members.id INNER JOIN classes ON classes.id = attendances.class_id WHERE classes.id = %s ORDER BY date DESC"
     values = [id]
     results = run_sql(sql, values)
 

@@ -19,7 +19,7 @@ class Class:
             "capacity": capacity,
             "members": [],
             "peak": self.peak_time(self.time),
-            "id": id,
+            "id": id
         }
 
     def __getitem__(self, key):

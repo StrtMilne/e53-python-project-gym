@@ -43,6 +43,13 @@
     {% endfor %}
 </section>
     <hr>
+
+<form action="/members/{{ member.id }}/class_search" method="POST">
+    <label for="class_search" class="text">Search class name:</label>
+    <input type="text" name="search" id="search" placeholder="Enter class name" class="form-input">
+    <button type="submit" class="submit-button">Search</button>
+</form>
+
 <form action="/members/{{ member.id }}/booked_classes" method="POST">
 <h2 class="spaces">Book more classes</h2> 
 <button type="submit" class="submit-button">Add members</button>
@@ -50,6 +57,7 @@
 <section class="view-container">
     {% for class in all_classes %}
         {% if class.id not in all_class_ids %}
+            {% if class_search == None or class.name == class_search %}
                 <div class="view-member">
                     <h2 class="text">{{ class.name }}</h2>
                     <p class="text">Type: {{ class.type }}</p>
@@ -65,6 +73,7 @@
                         </div>
                     {% endif%}
                 </div>
+            {% endif %}
         {% endif %}
     {% endfor %}
 </section>

@@ -44,7 +44,8 @@ def update_member(id):
     all_classes = classes_repository.select_all()
     class_ids = members_repository.class_ids(id)
 
-    return render_template("/members/booked_classes.html", title="Booked classes", member=member, booked_classes=classes, all_classes=all_classes, all_class_ids=class_ids, member_id=id)
+    class_search = None
+    return render_template("/members/booked_classes.html", title="Booked classes", member=member, booked_classes=classes, all_classes=all_classes, all_class_ids=class_ids, member_id=id, class_search=class_search)
 
 @members_blueprint.route("/members/new")
 def add_member():
@@ -72,7 +73,8 @@ def booked_classes(id):
     all_classes = classes_repository.select_all()
     class_ids = members_repository.class_ids(id)
     member = members_repository.select(id)
-    return render_template("/members/booked_classes.html", title="Booked classes", member=member, booked_classes=classes, all_classes=all_classes, all_class_ids=class_ids, member_id=id)
+    class_search = None
+    return render_template("/members/booked_classes.html", title="Booked classes", member=member, booked_classes=classes, all_classes=all_classes, all_class_ids=class_ids, member_id=id, class_search=class_search)
 
 @members_blueprint.route("/members/booked_classes/<member_id>/<class_id>/remove")
 def remove_member(member_id, class_id):
@@ -83,7 +85,8 @@ def remove_member(member_id, class_id):
     all_classes = classes_repository.select_all()
     class_ids = members_repository.class_ids(member_id)
     member = members_repository.select(member_id)
-    return render_template("/members/booked_classes.html", title="Booked classes", member=member, booked_classes=classes, all_classes=all_classes, all_class_ids=class_ids, member_id=member_id)
+    class_search = None
+    return render_template("/members/booked_classes.html", title="Booked classes", member=member, booked_classes=classes, all_classes=all_classes, all_class_ids=class_ids, member_id=member_id, class_search=class_search)
 
 @members_blueprint.route("/members/<member_id>/booked_classes", methods=["POST"])
 def add_multiple_classes(member_id):
@@ -99,7 +102,8 @@ def add_multiple_classes(member_id):
     all_classes = classes_repository.select_all()
     class_ids = members_repository.class_ids(member_id)
     member = members_repository.select(member_id)
-    return render_template("/members/booked_classes.html", title="Booked classes", member=member, booked_classes=classes, all_classes=all_classes, all_class_ids=class_ids, member_id=member_id)
+    class_search = None
+    return render_template("/members/booked_classes.html", title="Booked classes", member=member, booked_classes=classes, all_classes=all_classes, all_class_ids=class_ids, member_id=member_id, class_search=class_search)
 
 @members_blueprint.route("/members/member_search", methods=["POST"])
 def member_search():
@@ -107,3 +111,14 @@ def member_search():
     member_search = None
     member_search = request.form["search"]
     return render_template("/members/view.html", title="All members", all_members=members, member_search=member_search)
+
+@members_blueprint.route("/members/<id>/class_search", methods=["POST"])
+def class_search(id):
+    classes = []
+    classes = members_repository.classes(id)
+    all_classes = classes_repository.select_all()
+    class_ids = members_repository.class_ids(id)
+    member = members_repository.select(id)
+    class_search = None
+    class_search = request.form["search"]
+    return render_template("/members/booked_classes.html", title="Booked classes", member=member, booked_classes=classes, all_classes=all_classes, all_class_ids=class_ids, member_id=id, class_search=class_search)
