@@ -1,0 +1,48 @@
+@media (max-width: 800px) {
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        display: grid;
+        grid-template-areas: 
+            "header header"
+            "nav nav"
+            "main main"
+            "footer footer";
+        grid-template-columns: 120px auto;
+        grid-template-rows: 120px 50px auto 120px;
+    }
+    ul {
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+    }
+
+    li {
+        padding: 0 10px;
+        transition: 1s;
+        text-align: left;
+    }
+
+    header {
+        background-color: rgb(10, 123, 28);;
+        display: flex;
+        flex-direction: row;
+        grid-area: header;
+        color: white;
+    }
+    
+    .home-button {
+        background-color: rgb(18, 88, 29);
+        justify-content: center;
+        width: auto;
+    }
+
+    main {
+        grid-area: main;
+        background-image: url("/static/images/gemini-512 (1).png");
+        background-repeat: no-repeat;
+        background-position: top right;
+        background-size: 250px;
+    }
+}
