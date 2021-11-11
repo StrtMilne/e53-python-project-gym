@@ -35,14 +35,14 @@
     .home-button {
         background-color: rgb(18, 88, 29);
         justify-content: center;
-        width: auto;
+        width: 120;
     }
 
     main {
         grid-area: main;
         background-image: url("/static/images/gemini-512 (1).png");
         background-repeat: no-repeat;
-        background-position: top right;
-        background-size: 250px;
+        background-position: top right -225px;
+        background-size: 450px;
     }
 }

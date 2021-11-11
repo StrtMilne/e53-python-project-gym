@@ -14,7 +14,7 @@ main {
     grid-area: main;
     background-image: url("/static/images/gemini-512 (1).png");
     background-repeat: no-repeat;
-    background-position: top right;
+    background-position: top right -250px ;
     background-size: 500px;
 }
 
