@@ -89,10 +89,13 @@ def total_members():
 def most_active_members():
     sql = "SELECT members.id FROM members INNER JOIN attendances ON members.id = attendances.member_id INNER JOIN classes ON attendances.class_id = classes.id"
     list = run_sql(sql)
-    id_list = most_common(list)
+    id_list = []
+    for id in list:
+        id_list.append(id[0])
+    common_id_list = most_common(id_list)
     member_list = []
-    for id in id_list:
-        member = select(id[0])
+    for id in common_id_list:
+        member = select(id)
         first_name = member.first_name
         last_name = member.last_name
         name = first_name + " " + last_name

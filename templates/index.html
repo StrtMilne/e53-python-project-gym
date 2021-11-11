@@ -5,7 +5,7 @@
     <h1> Welcome to Gymini - gym admin manager</h1>
     <h2 class="grey">Total members: {{ total_members }}</h2>
     <h2 class="darkgrey">Total classes: {{ total_classes }}</h2>
-    <h2 class="grey">Most active member: {% for name in member_list %} {{ name }} {% endfor %}</h2>
-    <h2 class="darkgrey">Most popular class: {% for name in class_list %} {{ name }} {% endfor %}</h2>
+    <h2 class="grey">Most active member: {% for name in member_list %}| {{ name }} | {% endfor %}</h2>
+    <h2 class="darkgrey">Most popular class: {% for name in class_list %}| {{ name }} | {% endfor %}</h2>
 </section>
 {% endblock %}

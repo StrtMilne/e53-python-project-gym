@@ -16,13 +16,13 @@ classes_repository.save(class_1)
 class_2 = Class("Weights", "Muscle", date(2021, 11, 17), time(10, 30), 6)
 classes_repository.save(class_2)
 
-class_3 = Class("Yoga", "Cardio", date(2021, 12, 14), time(8, 30), 12)
+class_3 = Class("Yoga", "Cardio", date(2021, 12, 14), time(9, 30), 12)
 classes_repository.save(class_3)
 
-class_4 = Class("Weights", "Muscle", date(2021, 11, 24), time(18, 30), 6)
+class_4 = Class("Weights", "Muscle", date(2021, 11, 24), time(13, 30), 6)
 classes_repository.save(class_4)
 
-class_5 = Class("Swimming", "Cardio", date(2021, 12, 23), time(7, 30), 20)
+class_5 = Class("Swimming", "Cardio", date(2021, 12, 23), time(10, 30), 20)
 classes_repository.save(class_5)
 
 class_6 = Class("Pilates", "Cardio", date(2021, 11, 29), time(11, 45), 15)

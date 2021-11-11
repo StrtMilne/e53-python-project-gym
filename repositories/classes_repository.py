@@ -82,8 +82,11 @@ def total_classes():
 def most_popular_classes():
     sql = "SELECT classes.name FROM classes INNER JOIN attendances ON classes.id = attendances.class_id INNER JOIN members ON attendances.member_id = members.id"
     list = run_sql(sql)
-    name_list = most_common(list)
+    name_list = []
+    for name in list:
+        name_list.append(name[0])
+    common_name_list = most_common(name_list)
     class_list = []
-    for name in name_list:
-        class_list.append(name[0])
+    for name in common_name_list:
+        class_list.append(name)
     return class_list
