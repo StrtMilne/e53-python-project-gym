@@ -7,7 +7,7 @@ body {
         "nav main"
         "footer footer";
     grid-template-columns: 120px auto;
-    grid-template-rows: 120px auto 120px;
+    grid-template-rows: 120px auto 80px;
 }
 
 main {
@@ -190,7 +190,12 @@ li:hover {
 }
 
 .footer-address {
-    padding: 0 0 10px 0;
+    margin: 5px;
+}
+
+.address-line {
+    margin: 2px;
+    padding: 0 0 0 0;
 }
 
 .add-member {

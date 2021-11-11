@@ -9,7 +9,7 @@
             "main main"
             "footer footer";
         grid-template-columns: 120px auto;
-        grid-template-rows: 120px 50px auto 120px;
+        grid-template-rows: 120px 50px auto 80px;
     }
     ul {
         padding: 0;
