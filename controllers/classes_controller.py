@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, request, Blueprint
 from models.attendance import Attendance
 from models.gym_class import Class
-from datetime import time, datetime
+from datetime import datetime
 
 import repositories.classes_repository as classes_repository
 import repositories.members_repository as members_repository

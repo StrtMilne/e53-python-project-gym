@@ -3,6 +3,7 @@ from db.run_sql import run_sql
 from models.gym_class import Class
 from models.member import Member
 from datetime import datetime
+from helpers.SQL_helpers import most_common
 
 
 def save(gym_class):
@@ -72,3 +73,17 @@ def delete_class(id):
     sql = "DELETE FROM classes WHERE id = %s"
     values = [id]
     run_sql(sql, values)
+
+def total_classes():
+    sql = "SELECT * FROM classes"
+    total_classes = len(run_sql(sql))
+    return total_classes
+
+def most_popular_classes():
+    sql = "SELECT classes.name FROM classes INNER JOIN attendances ON classes.id = attendances.class_id INNER JOIN members ON attendances.member_id = members.id"
+    list = run_sql(sql)
+    name_list = most_common(list)
+    class_list = []
+    for name in name_list:
+        class_list.append(name[0])
+    return class_list

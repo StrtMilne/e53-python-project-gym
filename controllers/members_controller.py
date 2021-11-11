@@ -1,6 +1,5 @@
 from flask import Flask, render_template, redirect, Blueprint, request
 from models.member import Member
-from models.gym_class import Class
 from models.attendance import Attendance
 
 import repositories.members_repository as members_repository

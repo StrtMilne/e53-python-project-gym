@@ -4,6 +4,8 @@ from models.member import Member
 from models.gym_class import Class
 import repositories.classes_repository as classes_repository
 
+from helpers.SQL_helpers import most_common
+
 def save(member):
     sql = "INSERT INTO members (first_name, last_name, dob, join_date, active, premium) VALUES (%s, %s, %s, %s, %s, %s) RETURNING *"
     values = [member.first_name, member.last_name, member.dob, member.join_date, member.active, member.premium]
@@ -78,3 +80,21 @@ def class_ids(id):
         id = row["class_id"]
         class_ids.append(id)
     return class_ids
+
+def total_members():
+    sql = "SELECT * FROM members"
+    total_members = len(run_sql(sql))
+    return total_members
+
+def most_active_members():
+    sql = "SELECT members.id FROM members INNER JOIN attendances ON members.id = attendances.member_id INNER JOIN classes ON attendances.class_id = classes.id"
+    list = run_sql(sql)
+    id_list = most_common(list)
+    member_list = []
+    for id in id_list:
+        member = select(id[0])
+        first_name = member.first_name
+        last_name = member.last_name
+        name = first_name + " " + last_name
+        member_list.append(name)
+    return member_list

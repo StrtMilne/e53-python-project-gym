@@ -58,6 +58,7 @@
     {% for class in all_classes %}
         {% if class.id not in all_class_ids %}
             {% if class_search == None or class.name == class_search %}
+                {% if not class.peak or member.premium%}
                 <div class="view-member">
                     <h2 class="text">{{ class.name }}</h2>
                     <p class="text">Type: {{ class.type }}</p>
@@ -73,6 +74,7 @@
                         </div>
                     {% endif%}
                 </div>
+                {% endif %}
             {% endif %}
         {% endif %}
     {% endfor %}
