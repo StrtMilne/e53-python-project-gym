@@ -66,18 +66,18 @@ attendance_1 = Attendance(1, 2)
 attendances_repository.save(attendance_1)
 
 attendance_2 = Attendance(1, 4)
-attendances_repository.save(attendance_1)
+attendances_repository.save(attendance_2)
 
 attendance_3 = Attendance(1, 2)
-attendances_repository.save(attendance_1)
+attendances_repository.save(attendance_3)
 
 attendance_4 = Attendance(2, 3)
-attendances_repository.save(attendance_1)
+attendances_repository.save(attendance_4)
 
 attendance_5 = Attendance(2, 2)
-attendances_repository.save(attendance_1)
+attendances_repository.save(attendance_5)
 
 attendance_6 = Attendance(3, 2)
-attendances_repository.save(attendance_1)
+attendances_repository.save(attendance_6)
 
 pdb.set_trace()

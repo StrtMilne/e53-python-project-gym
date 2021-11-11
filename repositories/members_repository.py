@@ -15,13 +15,13 @@ def save(member):
 
 def select_all():
     members = []
-    sql = "SELECT * FROM members"
+    sql = "SELECT * FROM members ORDER BY last_name ASC"
     results = run_sql(sql)
 
     for row in results:
         member = Member(row["first_name"], row["last_name"], row["dob"], row["join_date"], row["active"], row["premium"], row["id"])
         members.append(member)
-    members = sorted(members, key=lambda n : n["last_name"])
+    # members = sorted(members, key=lambda n : n["last_name"])
     return members
 
 def select(id):
@@ -50,7 +50,7 @@ def classes(id):
         gym_class = Class(row["name"], row["type"], row["date"], row["time"], row["capacity"], row["id"])
         gym_class.members = classes_repository.member_ids(row["id"])
         classes.append(gym_class)
-    classes = sorted(classes, key=lambda n : n["date"])
+    # classes = sorted(classes, key=lambda n : n["date"])
     return classes
 
 def unbooked_classes(id):

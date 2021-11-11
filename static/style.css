@@ -12,6 +12,10 @@ body {
 
 main {
     grid-area: main;
+    background-image: url("/static/images/gemini-512 (1).png");
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: 500px;
 }
 
 nav {
@@ -39,11 +43,19 @@ footer {
 }
 
 header {
-    background-color: rgb(10, 123, 28);;
+    background-color: rgb(10, 123, 28);
     display: flex;
     flex-direction: row;
     grid-area: header;
     color: white;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    padding: 0 0 0 30px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .head-title {
@@ -66,12 +78,12 @@ header {
 }
 
 .class-item {
-    background-color: lightgrey;
+    background-color: rgba(211, 211, 211, 0.772);
     margin: 5px;
 }
 
 .member-item {
-    background-color: lightgrey;
+    background-color: rgba(211, 211, 211, 0.772);
     margin: 15px 5px;
     display: flex;
     flex-direction: column;
@@ -184,7 +196,7 @@ li:hover {
 .add-member {
     margin: 0;
     padding: 10px 20px 10px 20px;
-    background-color: rgb(10, 123, 28);;
+    background-color: rgba(10, 123, 29, 0.772);
     color: #000000;
     width: auto;
     text-align: center;
@@ -193,11 +205,11 @@ li:hover {
 }
 
 .add-member:hover {
-    background-color: rgb(0, 109, 128);
+    background-color: rgba(0, 109, 128, 0.779);
 }
 
 .inactive {
-    background-color: rgb(129, 129, 129);
+    background-color: rgba(129, 129, 129, 0.752);
     margin: margin: 15px 5px;;
     display: flex;
     flex-direction: column;
@@ -213,13 +225,13 @@ li:hover {
 }
 
 .inactive-status {
-    color: red;
+    color: rgb(255, 0, 0);
 }
 
 .select-container {
     margin: 0;
     padding: 10px 20px 10px 20px;
-    background-color: orange;
+    background-color: rgba(255, 166, 0, 0.772);
     color: black;
     width: auto;
     transition: 1s;
@@ -229,14 +241,14 @@ li:hover {
 .remove-container {
     margin: 0;
     padding: 10px 20px 10px 20px;
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.772);
     color: black;
     width: auto;
     transition: 1s;
 }
 
 .remove-container:hover {
-    background-color: rgb(172, 0, 0);
+    background-color: rgba(172, 0, 0, 0.779);
 }
 
 .inline {
@@ -247,7 +259,7 @@ li:hover {
 .delete-button {
     margin: 0;
     padding: 0;
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.779);
     color: black;
     width: 40px;
     transition: 1s;
@@ -257,7 +269,7 @@ li:hover {
 }
 
 .delete-button:hover {
-    background-color: rgb(172, 0, 0)
+    background-color: rgba(172, 0, 0, 0.772)
 }
 
 .class-heading {
@@ -267,7 +279,7 @@ li:hover {
 }
 
 .view-member {
-    background-color: lightgrey;
+    background-color: rgba(211, 211, 211, 0.772);
     margin: 5px;
     display: flex;
     flex-direction: column;
@@ -311,22 +323,23 @@ li:hover {
 .full {
     margin: 0;
     padding: 10px 20px 10px 20px;
-    background-color: rgb(255, 102, 0);
+    background-color: rgba(255, 102, 0, 0.683);
     color: black;
     width: auto;
 }
 
 .grey {
-    background-color: lightgrey;
-    margin: 0;
+    background-color: rgb(182, 177, 177, 0.3);
+    margin: 0 20px 0 0;
     padding: 20px;
 }
 
 .darkgrey {
-    background-color: rgb(255, 255, 255);
-    margin: 0;
+    background-color: rgb(255, 255, 255, 0.5);
+    margin: 0 20px 0 0;
     padding: 20px;
 }
+
 
 @media (max-width: 800px) {
     body {
