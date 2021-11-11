@@ -1,6 +1,8 @@
 from controllers import members_controller
+from models.attendance import Attendance
 from models.member import Member
 from models.gym_class import Class
+from repositories import attendances_repository
 import repositories.classes_repository as classes_repository
 import repositories.members_repository as members_repository
 import controllers.classes_controller as classes_controller
@@ -51,5 +53,31 @@ members_repository.save(member_5)
 member_6 = Member("James", "Mill", "09/11/80", "19/8/19")
 members_repository.save(member_6)
 
+member_7 = Member("Joanne", "Boyd", "10/11/94", "20/4/17")
+members_repository.save(member_7)
+
+member_8 = Member("Victor", "McGregor", "12/8/79", "13/8/21")
+members_repository.save(member_8)
+
+member_9 = Member("Alan", "Mill", "09/11/80", "19/8/19")
+members_repository.save(member_9)
+
+attendance_1 = Attendance(1, 2)
+attendances_repository.save(attendance_1)
+
+attendance_2 = Attendance(1, 4)
+attendances_repository.save(attendance_1)
+
+attendance_3 = Attendance(1, 2)
+attendances_repository.save(attendance_1)
+
+attendance_4 = Attendance(2, 3)
+attendances_repository.save(attendance_1)
+
+attendance_5 = Attendance(2, 2)
+attendances_repository.save(attendance_1)
+
+attendance_6 = Attendance(3, 2)
+attendances_repository.save(attendance_1)
 
 pdb.set_trace()
