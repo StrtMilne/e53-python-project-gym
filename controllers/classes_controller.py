@@ -70,14 +70,6 @@ def booked_members(id):
     member_name = None
     return render_template("/classes/booked_members.html", title="Booked members", gym_class=gym_class, class_name=class_name, booked_members=members, all_members=all_members, all_member_ids=member_ids, number_attendees=number_attendees, id=id, member_name=member_name)
 
-# @classes_blueprint.route("/classes/<id>/<class_id>/add_member")
-# def add_member_to_class(id, class_id):
-#     attendance = Attendance(id, class_id)
-#     attendances_repository.save(attendance)
-#     return redirect("/classes")
-
-##replaced with multi-select
-
 @classes_blueprint.route("/classes/booked_members/<member_id>/<class_id>/remove")
 def remove_member(member_id, class_id):
     classes_repository.member_remove(member_id, class_id)

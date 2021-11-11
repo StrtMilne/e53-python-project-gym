@@ -22,7 +22,6 @@ def select_all():
     for row in results:
         gym_class = Class(row["name"], row["type"], row["date"], row["time"], row["capacity"], row["id"])
         classes.append(gym_class)
-    # classes = sorted(classes, key=lambda n : n["date"])
     return classes
     
 def select(id):
@@ -52,7 +51,6 @@ def members(id):
     for row in results:
         member = Member(row["first_name"], row["last_name"], row["dob"], row["join_date"], row["active"], row["premium"], row["id"])
         members.append(member)
-    # members = sorted(members, key=lambda n : n["last_name"])
     return members
 
 def member_ids(id):
