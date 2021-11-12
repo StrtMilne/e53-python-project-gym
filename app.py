@@ -3,7 +3,6 @@ from controllers.members_controller import members_blueprint
 from controllers.classes_controller import classes_blueprint
 import repositories.members_repository as members_repository
 import repositories.classes_repository as classes_repository
-from helpers.SQL_helpers import most_common
 
 app = Flask(__name__)
 

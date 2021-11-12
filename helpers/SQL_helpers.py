@@ -5,7 +5,6 @@ def most_common(list):
 
     for item in list:
         occurances = list.count(item)
-
         if item not in tried:
             if occurances == instances:
                 result.append(item)

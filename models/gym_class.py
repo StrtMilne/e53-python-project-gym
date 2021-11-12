@@ -16,7 +16,6 @@ class Class:
         self.members.append(id)
 
     def peak_time(self, booking):
-        print(type(booking))
         if time(9, 00) <= booking <= time(17, 00):
             return False
         else:
