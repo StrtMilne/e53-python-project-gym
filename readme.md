@@ -1,3 +1,14 @@
+# Python gym booking App
+### First project in Python
+
+### Includes (but not limited to):
+##### Members screen
+![Screenshot 2022-02-09 171432](https://user-images.githubusercontent.com/86377797/153254125-b78798e6-219c-418f-97cb-7b0ec3e73dd8.png)
+
+##### Book classes through member
+![Screenshot 2022-02-09 171524](https://user-images.githubusercontent.com/86377797/153254242-6b1096bf-b024-4db8-9ba9-ba3c4434df45.png)
+
+# Run commands
 ## SQL commands while in GYM_APP directory:
 
 - createdb gym
